@@ -20,6 +20,6 @@ log = logging.getLogger(__name__)
 # from openedx_events.learning.signals import CERTIFICATE_CREATED  # lint-amnesty, pylint: disable=wrong-import-order
 
 
-@receiver(REGISTER_USER)
+@receiver(REGISTER_USER, dispatch_uid="stepwise_REGISTER_USER")
 def register_user(sender, user, registration, **kwargs):
     log.info("stepwise_plugin received REGISTER_USER signal for {username}".format(username=user.username))

@@ -17,11 +17,11 @@ log = logging.getLogger(__name__)
 # from openedx_events.learning.signals import SESSION_LOGIN_COMPLETED
 
 
-@receiver(user_logged_in)
+@receiver(user_logged_in, dispatch_uid="stepwise_user_logged_in")
 def post_login(sender, user, request, **kwargs):
     log.info("stepwise_plugin received user_logged_in signal for {username}".format(username=user.username))
 
 
-@receiver(user_logged_out)
+@receiver(user_logged_out, dispatch_uid="stepwise_user_logged_out")
 def post_logout(sender, user, request, **kwargs):
     log.info("stepwise_plugin received user_logged_out signal for {username}".format(username=user.username))
