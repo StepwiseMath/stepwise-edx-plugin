@@ -15,7 +15,7 @@ log = logging.getLogger(__name__)
 
 
 class StepwisePluginConfig(AppConfig):
-    name = "stepwise_plugin"
+    name = "stepwise_plugin.apps.StepwisePluginConfig"
     label = "stepwise_plugin"
     verbose_name = "StepWise edx-platform user app modifications and enhancements"
 
