@@ -21,8 +21,14 @@ pip install /home/ubuntu/stepwise_plugin
 ```
 
 ```python
-# add this near the bottom of /edx/app/edxapp/edx-platform/lms/envs/common.py
-INSTALLED_APPS.extend('stepwise_plugin')
+# DO NOT!! add this near the bottom of /edx/app/edxapp/edx-platform/lms/envs/common.py
+
+# NO! NO! NO! NO! NO! NO! NO! NO! NO! NO! NO! NO! 
+INSTALLED_APPS.extend('stepwise_plugin')    # DO NOT DO THIS!!!!!!
+# NO! NO! NO! NO! NO! NO! NO! NO! NO! NO! NO! NO! 
+
+# it turns out that Open edX finds this package of its own accord.
+# magical!!! :O
 ```
 
 
