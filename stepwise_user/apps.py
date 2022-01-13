@@ -24,7 +24,7 @@ class UserConfig(AppConfig):
         PluginURLs.CONFIG: {
             ProjectType.LMS: {
                 PluginURLs.NAMESPACE: name,
-                PluginURLs.REGEX: "^stepwise/user/api/",
+                PluginURLs.REGEX: "^stepwise/",
                 PluginURLs.RELATIVE_PATH: "urls",
             }
         },
