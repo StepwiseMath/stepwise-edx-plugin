@@ -9,10 +9,10 @@ from django.conf.urls import url
 from django.conf import settings
 
 # this repo
-from .views import dashboard
+from .views import student_dashboard
 
 app_name = "stepwise_plugin"
 
 urlpatterns = [
-    url(r"^dashboard/?$", dashboard, name="stepwise_dashboard"),
+    url(r"^dashboard/?$", student_dashboard, name="stepwise_dashboard"),
 ]
