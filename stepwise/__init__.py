@@ -1,1 +1,1 @@
-default_app_config = "stepwise.apps.StepWiseConfig"
+default_app_config = "stepwise.apps.StepwisePluginConfig"

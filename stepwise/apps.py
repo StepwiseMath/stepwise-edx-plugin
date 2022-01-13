@@ -14,7 +14,7 @@ from openedx.core.djangoapps.plugins.constants import ProjectType, SettingsType
 log = logging.getLogger(__name__)
 
 
-class StepWiseConfig(AppConfig):
+class StepwisePluginConfig(AppConfig):
     name = "stepwise_plugin"
     label = "stepwise_plugin"
     verbose_name = "StepWise edx-platform user app modifications and enhancements"

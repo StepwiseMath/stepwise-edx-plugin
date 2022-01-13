@@ -83,7 +83,7 @@ setup(
         #            and also that you are not introducing any name collisions.
         # https://github.com/openedx/edx-platform/blob/master/setup.py#L88
         "lms.djangoapp": [
-            "stepwise_plugin = stepwise.apps:StepWiseConfig",
+            "stepwise_plugin = stepwise.apps:StepwisePluginConfig",
         ],
         "cms.djangoapp": [],
     },
