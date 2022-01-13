@@ -85,8 +85,7 @@ setup(
         "lms.djangoapp": [
             "stepwise_user = stepwise_edxapi.apps:EdxapiConfig",
         ],
-        "cms.djangoapp": [
-        ],
+        "cms.djangoapp": [],
     },
     extras_require={
         "Django": ["Django>=2.2,<2.3"],

@@ -14,5 +14,5 @@ from .views import dashboard
 app_name = "stepwise_user"
 
 urlpatterns = [
-    url(r'^dashboard/?$', dashboard, name="stepwise_dashboard"),
+    url(r"^dashboard/?$", dashboard, name="stepwise_dashboard"),
 ]

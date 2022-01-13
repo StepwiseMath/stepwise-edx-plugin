@@ -15,9 +15,10 @@ log = logging.getLogger(__name__)
 
 # Coming in Maple
 # ----------------
-#from openedx_events.learning.signals import STUDENT_REGISTRATION_COMPLETED
-#from openedx_events.learning.signals import COURSE_ENROLLMENT_CREATED
-#from openedx_events.learning.signals import CERTIFICATE_CREATED  # lint-amnesty, pylint: disable=wrong-import-order
+# from openedx_events.learning.signals import STUDENT_REGISTRATION_COMPLETED
+# from openedx_events.learning.signals import COURSE_ENROLLMENT_CREATED
+# from openedx_events.learning.signals import CERTIFICATE_CREATED  # lint-amnesty, pylint: disable=wrong-import-order
+
 
 @receiver(REGISTER_USER)
 def register_user(sender, user, registration, **kwargs):

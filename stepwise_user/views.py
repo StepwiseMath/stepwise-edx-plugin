@@ -17,6 +17,7 @@ from .utils import set_language_preference
 
 log = logging.getLogger(__name__)
 
+
 def student_dashboard(request):
 
     if request.user and request.user.is_authenticated:
