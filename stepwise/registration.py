@@ -22,4 +22,4 @@ log = logging.getLogger(__name__)
 
 @receiver(REGISTER_USER)
 def register_user(sender, user, registration, **kwargs):
-    log.info("stepwise_user received REGISTER_USER signal for {username}".format(username=user.username))
+    log.info("stepwise_plugin received REGISTER_USER signal for {username}".format(username=user.username))

@@ -11,7 +11,7 @@ from django.conf import settings
 # this repo
 from .views import dashboard
 
-app_name = "stepwise_user"
+app_name = "stepwise_plugin"
 
 urlpatterns = [
     url(r"^dashboard/?$", dashboard, name="stepwise_dashboard"),

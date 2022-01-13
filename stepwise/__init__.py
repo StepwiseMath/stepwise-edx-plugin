@@ -1,1 +1,1 @@
-default_app_config = "stepwise_user.apps.UserConfig"
+default_app_config = "stepwise_plugin.apps.UserConfig"

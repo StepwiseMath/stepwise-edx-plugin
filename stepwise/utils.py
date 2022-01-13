@@ -32,7 +32,7 @@ def set_language_preference(request):
     if language_param:
         closest_lang = get_closest_released_language(language_param)
         log.info(
-            "stepwise_user.utils.set_language_preference() (2) detected language param={language_param}. closest installed={closest_lang}".format(
+            "stepwise_plugin.utils.set_language_preference() (2) detected language param={language_param}. closest installed={closest_lang}".format(
                 language_param=language_param, closest_lang=closest_lang
             )
         )
@@ -45,7 +45,7 @@ def set_language_preference(request):
     if referrer_domain and referrer_domain[:2].lower() == "mx":
         closest_lang = get_closest_released_language("es_MX")
         log.info(
-            "stepwise_user.utils.set_language_preference() (3) detected referrer_domain={referrer_domain}. closest installed={closest_lang}".format(
+            "stepwise_plugin.utils.set_language_preference() (3) detected referrer_domain={referrer_domain}. closest installed={closest_lang}".format(
                 referrer_domain=referrer_domain, closest_lang=closest_lang
             )
         )

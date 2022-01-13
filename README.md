@@ -22,7 +22,7 @@ pip install /home/ubuntu/stepwise_plugin
 
 ```python
 # add this near the bottom of /edx/app/edxapp/edx-platform/lms/envs/common.py
-INSTALLED_APPS.extend(['stepwise_user', ])
+INSTALLED_APPS.extend('stepwise_plugin')
 ```
 
 
@@ -33,7 +33,7 @@ source /edx/app/edxapp/edxapp_env
 source /edx/app/edxapp/venvs/edxapp/bin/activate
 pip install -r requirements/edx/testing.txt
 cd ~/edx-platform
-./manage.py lms test stepwise_user --settings=test
+./manage.py lms test stepwise_plugin --settings=test
 ```
 
 

@@ -19,9 +19,9 @@ log = logging.getLogger(__name__)
 
 @receiver(user_logged_in)
 def post_login(sender, user, request, **kwargs):
-    log.info("stepwise_user received user_logged_in signal for {username}".format(username=user.username))
+    log.info("stepwise_plugin received user_logged_in signal for {username}".format(username=user.username))
 
 
 @receiver(user_logged_out)
 def post_logout(sender, user, request, **kwargs):
-    log.info("stepwise_user received user_logged_out signal for {username}".format(username=user.username))
+    log.info("stepwise_plugin received user_logged_out signal for {username}".format(username=user.username))
