@@ -14,9 +14,9 @@ from openedx.core.djangoapps.plugins.constants import ProjectType, SettingsType
 log = logging.getLogger(__name__)
 
 
-class UserConfig(AppConfig):
-    name = "stepwise_user"
-    label = "stepwise_user"
+class StepWiseConfig(AppConfig):
+    name = "stepwise_plugin"
+    label = "stepwise_plugin"
     verbose_name = "StepWise edx-platform user app modifications and enhancements"
 
     # See: https://edx.readthedocs.io/projects/edx-django-utils/en/latest/edx_django_utils.plugins.html
