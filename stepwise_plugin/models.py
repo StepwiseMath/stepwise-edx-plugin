@@ -4,27 +4,32 @@ from django.utils.translation import ugettext as _
 
 from model_utils.models import TimeStampedModel
 
+
 class Locale(TimeStampedModel):
     """
     Stores localized urls and translated html tag element values by language code
     Used in conjunction with Mako templates to localize StepWise specific page content
     such as footer links.
     """
+
     languages = (
-        ('en', 'English'),
-        ('es-419', 'Español (Latinoamérica)'),  # Spanish (Latin America)
-        ('pt-pt', 'Português (Portugal)'),  # Portuguese (Portugal)
+        ("en", "English"),
+        ("es-419", "Español (Latinoamérica)"),  # Spanish (Latin America)
+        ("pt-pt", "Português (Portugal)"),  # Portuguese (Portugal)
     )
+
     class Meta:
         unique_together = ("element_id", "lang")
 
     element_id = models.CharField(
         blank=False,
+        max_length=255,
         help_text=_(u"An html element id. Example: stepwise-locale-contact"),
     )
     lang = models.CharField(
         blank=False,
-        choices=languages
+        choices=languages,
+        max_length=20,
         help_text=_(u"A language code. Examples: en, en-US, es, es-419, es-MX"),
     )
     url = models.URLField(
@@ -33,11 +38,13 @@ class Locale(TimeStampedModel):
     )
     value = models.CharField(
         blank=False,
+        max_length=255,
         help_text=_(u"The text value of this html element. Example: Contacto"),
     )
 
     def __str__(self):
-        return self.element_id + ' - ' + self.lang
+        return self.element_id + " - " + self.lang
+
 
 class Configuration(models.Model):
     u"""
