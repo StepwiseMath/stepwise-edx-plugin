@@ -10,6 +10,8 @@ Usage:  To intercept http requests so that can do things like:
             - update user profile data
 """
 import logging
+from django.shortcuts import redirect
+from django.urls import reverse
 
 from common.djangoapps.student.views import student_dashboard as lms_student_dashboard
 
@@ -23,4 +25,5 @@ def student_dashboard(request):
     if request.user and request.user.is_authenticated:
         set_language_preference(request)
 
-    return lms_student_dashboard(request)
+    return redirect(reverse('dashboard'))
+    #return lms_student_dashboard(request)
