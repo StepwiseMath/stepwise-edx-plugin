@@ -6,7 +6,6 @@ Cabinet Office User Module URLs.
 """
 # Django
 from django.conf.urls import url
-from django.conf import settings
 
 # this repo
 from stepwise_plugin.dashboard.views import student_dashboard
@@ -16,5 +15,4 @@ app_name = "stepwise_plugin"
 
 urlpatterns = [
     url(r"^dashboard/?$", student_dashboard, name="stepwise_dashboard"),
-]
-urlpatterns.append(api_urlpatterns)
+] + api_urlpatterns
