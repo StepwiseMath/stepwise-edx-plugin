@@ -84,8 +84,11 @@ setup(
         # https://github.com/openedx/edx-platform/blob/master/setup.py#L88
         "lms.djangoapp": [
             "stepwise_plugin = stepwise_plugin.apps:StepwisePluginConfig",
+            "stepwise_api = stepwise_api.apps.StepwiseApiConfig",
         ],
-        "cms.djangoapp": [],
+        "cms.djangoapp": [
+            "stepwise_api = stepwise_api.apps.StepwiseApiConfig",
+        ],
     },
     extras_require={
         "Django": ["Django>=2.2,<2.3"],

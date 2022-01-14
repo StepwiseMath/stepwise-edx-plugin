@@ -1,0 +1,1 @@
+default_app_config = "stepwise_api.apps.StepwiseApiConfig"
