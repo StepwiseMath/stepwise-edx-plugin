@@ -1,5 +1,4 @@
 from __future__ import absolute_import
-from django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
 from rest_framework.documentation import include_docs_urls
 # may-2020: swagger seems to have been removed in juniper.rc3

@@ -1,6 +1,4 @@
 from __future__ import absolute_import
-import os
-from django.contrib.contenttypes.fields import GenericForeignKey
 from django.db import models
 from django.utils.translation import ugettext as _
 
