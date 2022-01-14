@@ -2,7 +2,7 @@ import logging
 from django.conf import settings
 from urllib.parse import urlparse
 
-from openedx.core.djangoapps.lang_pref.api import get_closest_released_language
+from openedx.core.djangoapps.lang_pref.api import get_closest_released_language, released_languages
 from openedx.core.djangoapps.lang_pref import LANGUAGE_KEY
 from openedx.core.djangoapps.user_api.preferences.api import get_user_preference, set_user_preference
 
@@ -13,7 +13,7 @@ def set_language_preference(request):
     """
     Preemptively set a language code preference based on
     1.) a language param that might be passed in the http request
-    2.) the 2-character subdomain of the referrer. example mx.stepwisemath.ai == 'mx'
+    2.) the 2-character subdomain of the referer. example mx.stepwisemath.ai == 'mx'
     """
     if not request.user or not request.user.is_authenticated:
         return None
@@ -21,11 +21,20 @@ def set_language_preference(request):
     preferred_language = get_user_preference(request.user, LANGUAGE_KEY)
     if preferred_language:
         log.info(
-            "user {username} (1) prefers language {preferred_language}".format(
+            "set_language_preference() user {username} (1) prefers language {preferred_language}".format(
                 username=request.user.username, preferred_language=preferred_language
             )
         )
         return None
+    else:
+        log.info(
+            "set_language_preference() no language preference set for user {username}".format(
+                username=request.user.username
+            )
+        )
+
+    released = released_languages()
+    log.info("set_language_preference() available languages are: {released}".format(released=released))
 
     # 2.) language code might be passed in as a parameter
     language_param = request.GET.get("language")
@@ -38,15 +47,26 @@ def set_language_preference(request):
         )
         set_user_preference(request.user, LANGUAGE_KEY, closest_lang)
         return None
+    else:
+        log.info(
+            "set_language_preference() no language param found in the request header for user {username}".format(
+                username=request.user.username
+            )
+        )
 
     # 3.) try infer a language preference from the referring host
-    referrer = urlparse(request.META.get("HTTP_REFERER", "Direct"))
-    referrer_domain = referrer.netloc
-    if referrer_domain and referrer_domain[:2].lower() == "mx":
+    referer = urlparse(request.META.get("HTTP_REFERER", "Direct"))
+    referer_domain = referer.netloc
+    log.info(
+        "set_language_preference() analyzing http referer {referer} with domain {domain}".format(
+            referer=referer, domain=referer_domain
+        )
+    )
+    if referer_domain and referer_domain[:2].lower() == "mx":
         closest_lang = get_closest_released_language("es_MX")
         log.info(
-            "stepwise_plugin.utils.set_language_preference() (3) detected referrer_domain={referrer_domain}. closest installed={closest_lang}".format(
-                referrer_domain=referrer_domain, closest_lang=closest_lang
+            "stepwise_plugin.utils.set_language_preference() (3) detected referer_domain={referer_domain}. closest installed={closest_lang}".format(
+                referer_domain=referer_domain, closest_lang=closest_lang
             )
         )
         set_user_preference(request.user, LANGUAGE_KEY, closest_lang)

@@ -21,5 +21,5 @@ log = logging.getLogger(__name__)
 
 
 @receiver(REGISTER_USER, dispatch_uid="stepwise_REGISTER_USER")
-def register_user(sender, user, registration, **kwargs):   # pylint: disable=unused-argument
+def register_user(sender, user, registration, **kwargs):  # pylint: disable=unused-argument
     log.info("stepwise_plugin received REGISTER_USER signal for {username}".format(username=user.username))

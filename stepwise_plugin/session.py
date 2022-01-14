@@ -18,10 +18,10 @@ AUDIT_LOG = logging.getLogger("audit")
 
 
 @receiver(user_logged_in, dispatch_uid="stepwise_user_logged_in")
-def post_login(sender, request, user, **kwargs):   # lint-amnesty, pylint: disable=unused-argument
+def post_login(sender, request, user, **kwargs):  # lint-amnesty, pylint: disable=unused-argument
     AUDIT_LOG.info("stepwise_plugin received user_logged_in signal for {username}".format(username=user.username))
 
 
 @receiver(user_logged_out, dispatch_uid="stepwise_user_logged_out")
-def post_logout(sender, request, user, **kwargs):   # lint-amnesty, pylint: disable=unused-argument
+def post_logout(sender, request, user, **kwargs):  # lint-amnesty, pylint: disable=unused-argument
     AUDIT_LOG.info("stepwise_plugin received user_logged_out signal for {username}".format(username=user.username))
