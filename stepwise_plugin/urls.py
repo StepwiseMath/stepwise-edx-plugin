@@ -2,7 +2,9 @@
 Lawrence McDaniel - https://lawrencemcdaniel.com
 Aug-2021
 
-Cabinet Office User Module URLs.
+https://web.stepwisemath.ai/stepwise/api/v1/configuration
+https://web.stepwisemath.ai/stepwise/dashboard
+https://web.stepwisemath.ai/stepwise/dashboard?language=es-419
 """
 # Django
 from django.conf.urls import url

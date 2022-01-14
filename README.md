@@ -1,4 +1,13 @@
 # StepWise Open edX Plugin
+===============================
+[![hack.d Lawrence McDaniel](https://img.shields.io/badge/hack.d-Lawrence%20McDaniel-orange.svg)](https://lawrencemcdaniel.com)
+
+Implements the following:
+
+https://web.stepwisemath.ai/stepwise/api/v1/configuration
+https://web.stepwisemath.ai/stepwise/dashboard
+https://web.stepwisemath.ai/stepwise/dashboard?language=es-419
+
 
 - [Open edX Reference Documentation](https://openedx.atlassian.net/wiki/spaces/AC/pages/28967836/Feature
 +Plugins+for+edX+Platform)
