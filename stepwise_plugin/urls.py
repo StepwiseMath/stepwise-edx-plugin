@@ -9,7 +9,7 @@ from django.conf.urls import url
 from django.conf import settings
 
 # this repo
-from .views import student_dashboard
+from dashboard.views import student_dashboard
 
 app_name = "stepwise_plugin"
 
