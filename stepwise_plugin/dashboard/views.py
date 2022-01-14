@@ -13,8 +13,6 @@ import logging
 from django.shortcuts import redirect
 from django.urls import reverse
 
-from common.djangoapps.student.views import student_dashboard as lms_student_dashboard
-
 from .utils import set_language_preference
 
 log = logging.getLogger(__name__)
@@ -26,4 +24,3 @@ def student_dashboard(request):
         set_language_preference(request)
 
     return redirect(reverse('dashboard'))
-    #return lms_student_dashboard(request)
