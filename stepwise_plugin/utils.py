@@ -2,7 +2,7 @@ import logging
 from django.conf import settings
 from urllib.parse import urlparse
 
-from openedx.core.djangoapps.lang_pref.api import get_closest_released_language, released_languages_list
+from openedx.core.djangoapps.lang_pref.api import get_closest_released_language, released_languages
 from openedx.core.djangoapps.lang_pref import LANGUAGE_KEY
 from openedx.core.djangoapps.user_api.preferences.api import get_user_preference, set_user_preference
 
@@ -33,8 +33,11 @@ def set_language_preference(request):
             )
         )
 
-    released = released_languages_list()
-    log.info("set_language_preference() available languages are: {released}".format(released=released))
+    released = released_languages()
+    languages = [lang.lower().strip() for lang in released.split(',')]
+    languages.sort()
+
+    log.info("set_language_preference() available languages are: {languages}".format(languages=languages))
 
     # 2.) language code might be passed in as a parameter
     language_param = request.GET.get("language")
