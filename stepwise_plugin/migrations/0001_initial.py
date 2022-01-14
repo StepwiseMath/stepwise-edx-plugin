@@ -9,18 +9,32 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Configuration',
+            name="Configuration",
             fields=[
-                ('type', models.CharField(choices=[('dev', 'Development'), ('test', 'Testing / QA'), ('prod', 'Production')], default='dev', help_text='Type of Open edX environment in which this configuration will be used.', max_length=24, primary_key=True, serialize=False, unique=True)),
-                ('created', models.DateTimeField(auto_now_add=True)),
-                ('updated', models.DateTimeField(auto_now=True)),
-                ('stepwise_host', models.URLField(blank=True, help_text='the URL pointing to the Querium Stepwise Server.', max_length=255)),
+                (
+                    "type",
+                    models.CharField(
+                        choices=[("dev", "Development"), ("test", "Testing / QA"), ("prod", "Production")],
+                        default="dev",
+                        help_text="Type of Open edX environment in which this configuration will be used.",
+                        max_length=24,
+                        primary_key=True,
+                        serialize=False,
+                        unique=True,
+                    ),
+                ),
+                ("created", models.DateTimeField(auto_now_add=True)),
+                ("updated", models.DateTimeField(auto_now=True)),
+                (
+                    "stepwise_host",
+                    models.URLField(
+                        blank=True, help_text="the URL pointing to the Querium Stepwise Server.", max_length=255
+                    ),
+                ),
             ],
         ),
     ]
-    

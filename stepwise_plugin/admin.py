@@ -5,11 +5,15 @@ from .models import Configuration
 
 class ConfigurationAdmin(admin.ModelAdmin):
     list_display = (
-        'type',
-        'stepwise_host',
-        'created',
-        'updated',
+        "type",
+        "stepwise_host",
+        "created",
+        "updated",
     )
-    readonly_fields=(u'created', u'updated', )
+    readonly_fields = (
+        u"created",
+        u"updated",
+    )
+
 
 admin.site.register(Configuration, ConfigurationAdmin)
