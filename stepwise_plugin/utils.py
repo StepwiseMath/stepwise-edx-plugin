@@ -34,9 +34,7 @@ def set_language_preference(request):
         )
 
     released = released_languages()
-    languages = [lang.lower().strip() for lang in released.split(',')]
-    languages.sort()
-
+    languages = ",".join(released)
     log.info("set_language_preference() available languages are: {languages}".format(languages=languages))
 
     # 2.) language code might be passed in as a parameter
