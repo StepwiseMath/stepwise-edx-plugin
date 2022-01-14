@@ -2,7 +2,7 @@
 Lawrence McDaniel - https://lawrencemcdaniel.com
 Aug-2021
 
-User module App Configuration
+StepWise plugin for Open edX - App Configuration
 """
 import logging
 
@@ -17,7 +17,7 @@ log = logging.getLogger(__name__)
 class StepwisePluginConfig(AppConfig):
     name = "stepwise_plugin"
     label = "stepwise_plugin"
-    verbose_name = "StepWise edx-platform user app modifications and enhancements"
+    verbose_name = "StepWise plugin for Open edX"
 
     # See: https://edx.readthedocs.io/projects/edx-django-utils/en/latest/edx_django_utils.plugins.html
     plugin_app = {
