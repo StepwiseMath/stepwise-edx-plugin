@@ -43,7 +43,6 @@ class MarketingSites(TimeStampedModel):
         unique_together = ("language", "province")
 
     language = models.CharField(
-        primary_key=True,
         blank=False,
         choices=ALL_LANGUAGES,
         max_length=20,
