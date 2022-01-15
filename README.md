@@ -17,6 +17,8 @@ Assigns the StepWise api server to use for the Open edX instance on which this p
 The api endpoint is: https://web.stepwisemath.ai/stepwise/api/v1/configuration
 
 source code is located in stepwise_plugin/api/
+Uses this Django model: https://web.stepwisemath.ai/admin/stepwise_plugin/configuration/
+
 
 ### Wordpress CTA links
 
@@ -28,9 +30,14 @@ source code is located in stepwise_plugin/dashboard/
 
 The reverse case. Provides a generalized way to seamlessly map the user from the LMS to the most sensible marketing site. An example usage is the "Discover New" link in the LMS site header. The url, assigned inside lms.yml within MKTG_URL_OVERRIDES is, https://web.stepwisemath.ai/stepwise/marketing-redirector/?stepwise_page=learning-content/ and will redirect to https://stepwisemath.ai/learning-content/ for a US-based user.
 
+Uses this Django model: https://web.stepwisemath.ai/admin/stepwise_plugin/marketingsites/
+
+
 ### Localized html anchor tags
 
 Same as above, but for html anchor tags. In addition to the URL mapping, these also require language translation of the text of the html element value, bearing in mind that we need to avoid changes to the edx-platform po files since we do not want to fork the edx-platform repo.
+
+Uses this Django model: https://web.stepwisemath.ai/admin/stepwise_plugin/locale/
 
 An example usage would be the "Blog" and "Privacy Policy" links in the LMS site footer. The following is added to the Mako template:
 
