@@ -1,17 +1,59 @@
 # StepWise Open edX Plugin
 ===============================
+
 [![hack.d Lawrence McDaniel](https://img.shields.io/badge/hack.d-Lawrence%20McDaniel-orange.svg)](https://lawrencemcdaniel.com)
 
-Implements the following:
-
-https://web.stepwisemath.ai/stepwise/api/v1/configuration
-https://web.stepwisemath.ai/stepwise/dashboard
-https://web.stepwisemath.ai/stepwise/dashboard?language=es-419
-
+See:
 
 - [Open edX Reference Documentation](https://openedx.atlassian.net/wiki/spaces/AC/pages/28967836/Feature
 +Plugins+for+edX+Platform)
 - [Reference project - edx-bulk-grades](https://github.com/openedx/edx-bulk-grades/)
+
+
+## Implements the following:
+
+### Querium StepWise Configuration API
+
+Assigns the StepWise api server to use for the Open edX instance on which this plugin is installed.
+The api endpoing is: https://web.stepwisemath.ai/stepwise/api/v1/configuration
+
+source code is located in stepwise_plugin/api/
+
+### Wordpress CTA links
+
+Provides a means to embed localization information about the user in CTA buttons that send the user from Wordpress to Open edX. The most common url presently is: https://web.stepwisemath.ai/stepwise/dashboard?language=es-419
+
+source code is located in stepwise_plugin/dashboard/
+
+### Localized Marketing Links
+
+Provides a generalized way to seamlessly map the user from the LMS to the most sensible marketing site. An example usage is the "Discover New" link in the LMS site header. The url, assigned inside lms.yml within MKTG_URL_OVERRIDES is, https://web.stepwisemath.ai/stepwise/marketing-redirector/?stepwise_page=learning-content/ and will redirect to https://stepwisemath.ai/learning-content/ for a US-based user.
+
+### Localized html anchor tags
+
+An example usage would be the "Blog" and "Privacy Policy" links in the LMS site footer. The following is added to the Mako template:
+
+```
+<% 
+
+  try:
+    preferred_language = get_user_preference(request.user, LANGUAGE_KEY) or 'en'
+  except Exception as e:
+    preferred_language = 'en'
+
+  blog_dict = anchor('stepwise-locale-blog', preferred_language)
+  privacy_dict = anchor('stepwise-locale-privacy', preferred_language)
+%>
+
+```
+
+and the link itself would take the form
+
+```
+    <a id="stepwise-locale-blog" href="${blog_dict.get('url')}">${blog_dict.get('value')}</a>
+```
+
+
 
 ## Getting Started
 
