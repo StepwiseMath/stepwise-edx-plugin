@@ -26,18 +26,22 @@ source code is located in stepwise_plugin/dashboard/
 
 ### Localized Marketing Links
 
-Provides a generalized way to seamlessly map the user from the LMS to the most sensible marketing site. An example usage is the "Discover New" link in the LMS site header. The url, assigned inside lms.yml within MKTG_URL_OVERRIDES is, https://web.stepwisemath.ai/stepwise/marketing-redirector/?stepwise_page=learning-content/ and will redirect to https://stepwisemath.ai/learning-content/ for a US-based user.
+The reverse case. Provides a generalized way to seamlessly map the user from the LMS to the most sensible marketing site. An example usage is the "Discover New" link in the LMS site header. The url, assigned inside lms.yml within MKTG_URL_OVERRIDES is, https://web.stepwisemath.ai/stepwise/marketing-redirector/?stepwise_page=learning-content/ and will redirect to https://stepwisemath.ai/learning-content/ for a US-based user.
 
 ### Localized html anchor tags
 
 An example usage would be the "Blog" and "Privacy Policy" links in the LMS site footer. The following is added to the Mako template:
 
 ```
+<%!
+  from stepwise_plugin.locale.utils import anchor, language_from_request
+%>
+
 <% 
 
   try:
-    preferred_language = get_user_preference(request.user, LANGUAGE_KEY) or 'en'
-  except Exception as e:
+    preferred_language = language_from_request(request) or 'en'
+  except:
     preferred_language = 'en'
 
   blog_dict = anchor('stepwise-locale-blog', preferred_language)
