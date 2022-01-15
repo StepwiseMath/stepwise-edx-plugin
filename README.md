@@ -17,6 +17,7 @@ Assigns the StepWise api server to use for the Open edX instance on which this p
 The api endpoint is: https://web.stepwisemath.ai/stepwise/api/v1/configuration
 
 source code is located in stepwise_plugin/api/
+
 Uses this Django model: https://web.stepwisemath.ai/admin/stepwise_plugin/configuration/
 
 
