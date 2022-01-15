@@ -11,7 +11,6 @@ from django.conf.urls import url
 
 # this repo
 from stepwise_plugin.dashboard.views import student_dashboard
-from stepwise_plugin.learning_content.views import list_by_locale
 from stepwise_plugin.locale.views import marketing_redirector
 from stepwise_plugin.api.urls import urlpatterns as api_urlpatterns
 
@@ -19,6 +18,5 @@ app_name = "stepwise_plugin"
 
 urlpatterns = [
     url(r"^dashboard/?$", student_dashboard, name="stepwise_dashboard"),
-    url(r"^learning-content/?$", list_by_locale, name="stepwise_learning_content"),
     url(r"^marketing-redirector/?$", marketing_redirector, name="stepwise_marketing_redirector"),
 ] + api_urlpatterns
