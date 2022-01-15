@@ -26,6 +26,6 @@ def plugin_settings(settings):
 
     see: https://stackoverflow.com/questions/56129708/how-to-force-redirect-uri-to-use-https-with-python-social-app
     """
-        
+
     settings.SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
-    #SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')    
+    # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
