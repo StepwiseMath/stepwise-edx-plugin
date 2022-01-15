@@ -12,19 +12,19 @@ LMS_LANGUAGES = (
 
 ALL_LANGUAGES = (
     ("en", "English"),
-    ('en-uk', 'English (United Kingdom)'),  # English (United Kingdom)
-    ('en@lolcat', 'LOLCAT English'),  # LOLCAT English
-    ('en@pirate', 'Pirate English'),  # Pirate English
+    ("en-uk", "English (United Kingdom)"),  # English (United Kingdom)
+    ("en@lolcat", "LOLCAT English"),  # LOLCAT English
+    ("en@pirate", "Pirate English"),  # Pirate English
     ("es-419", "Español (Latinoamérica)"),  # Spanish (Latin America)
-    ('es-ar', 'Español (Argentina)'),  # Spanish (Argentina)
-    ('es-ec', 'Español (Ecuador)'),  # Spanish (Ecuador)
-    ('es-es', 'Español (España)'),  # Spanish (Spain)
-    ('es-mx', 'Español (México)'),  # Spanish (Mexico)
-    ('es-pe', 'Español (Perú)'),  # Spanish (Peru)
-    ('pt-br', 'Português (Brasil)'),  # Portuguese (Brazil)
-    ('pt-pt', 'Português (Portugal)'),  # Portuguese (Portugal)
-    ('it-it', 'Italiano (Italia)'),  # Italian (Italy)
-    ('fr', 'Français'),  # French
+    ("es-ar", "Español (Argentina)"),  # Spanish (Argentina)
+    ("es-ec", "Español (Ecuador)"),  # Spanish (Ecuador)
+    ("es-es", "Español (España)"),  # Spanish (Spain)
+    ("es-mx", "Español (México)"),  # Spanish (Mexico)
+    ("es-pe", "Español (Perú)"),  # Spanish (Peru)
+    ("pt-br", "Português (Brasil)"),  # Portuguese (Brazil)
+    ("pt-pt", "Português (Portugal)"),  # Portuguese (Portugal)
+    ("it-it", "Italiano (Italia)"),  # Italian (Italy)
+    ("fr", "Français"),  # French
 )
 
 
@@ -38,6 +38,7 @@ class MarketingSites(TimeStampedModel):
     en      maps to https://stepwisemath.ai
     en-US   maps to https://stepwisemath.ai
     """
+
     language = models.CharField(
         primary_key=True,
         blank=False,
@@ -50,6 +51,7 @@ class MarketingSites(TimeStampedModel):
         blank=False,
         help_text=_(u"URL for for anchor tag for this language. Example: https://mx.stepwisemath.ai/contact/"),
     )
+
 
 class Locale(TimeStampedModel):
     """

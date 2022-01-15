@@ -7,9 +7,10 @@ from .utils import get_marketing_site
 
 log = logging.getLogger(__name__)
 
+
 def marketing_redirector(request):
     """
-    Receives urls from MKTG_URL_OVERRIDES such as 
+    Receives urls from MKTG_URL_OVERRIDES such as
 
     MKTG_URL_OVERRIDES: {
         "COURSES": "https://web.stepwisemath.ai/marketing-redirector?stepwise_page=learning-content",
@@ -22,5 +23,5 @@ def marketing_redirector(request):
     url = get_marketing_site(request)
     stepwise_page = request.GET.get("stepwise_page") or ""
     redirect_to = urljoin(url, stepwise_page)
-    
+
     return redirect(redirect_to)

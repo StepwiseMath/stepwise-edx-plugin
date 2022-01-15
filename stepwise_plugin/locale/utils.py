@@ -16,15 +16,16 @@ from stepwise_plugin.models import Locale, MarketingSites
 
 log = logging.getLogger(__name__)
 
+
 def get_marketing_site(request):
     """
-    Returns the url to the marketing site for the user 
+    Returns the url to the marketing site for the user
     based on informatin that can be gleaned from the request object.
 
     First, determine the best possible language code for the user
     taking into account all available information and meta data we have about the user.
 
-    Then, map the language code to a marketing site url based on data we've 
+    Then, map the language code to a marketing site url based on data we've
     persisted to MarketingSites.
 
     example return value: https://mx.stepwisemath.ai/
@@ -32,6 +33,7 @@ def get_marketing_site(request):
     language = language_from_request(request)
     url = MarketingSites.objects.filter(language=language).first()
     return url
+
 
 def language_from_request(request):
     """
@@ -46,27 +48,29 @@ def language_from_request(request):
     #     using the language drop-down in the LMS site header.
     try:
         preferred_language = get_user_preference(request.user, LANGUAGE_KEY)
-        log.info("language_from_request() found language preference of {preferred_language} for username {username}".format(
-            preferred_language=preferred_language,
-            username=request.user.username
-        ))
+        log.info(
+            "language_from_request() found language preference of {preferred_language} for username {username}".format(
+                preferred_language=preferred_language, username=request.user.username
+            )
+        )
     except:
         # is the user is not authenticated or if the user is logging out
         # then this is prone to raising an exception.
         pass
 
     # 2.) Look for a language code parameter in the request
-    #     the marketing sites include CTA links such as 
+    #     the marketing sites include CTA links such as
     #     https://web.stepwisemath.ai/stepwise/dashboard?language=es-419
     if not preferred_language:
         preferred_language = request.GET.get("language")
         if preferred_language:
             # if necessary, reduce the language setting to the most closely installed language
             closest_released_language = get_closest_released_language(preferred_language)
-            log.info("language_from_request() found language param of {preferred_language} in the request params. Closest released language is {closest_released_language}".format(
-                preferred_language=preferred_language,
-                closest_released_language=closest_released_language
-            ))
+            log.info(
+                "language_from_request() found language param of {preferred_language} in the request params. Closest released language is {closest_released_language}".format(
+                    preferred_language=preferred_language, closest_released_language=closest_released_language
+                )
+            )
             return closest_released_language
 
     # 3.) Try to grab the language code from Django middleware, if its installed
@@ -91,11 +95,11 @@ def language_from_request(request):
     if not preferred_language:
         # we should never make it this far ...
         # belt & suspenderes stop-gap
-        preferred_language = 'en'
+        preferred_language = "en"
 
     # -------------------------------------------------------------------------
     # some language codes are more general that we'd prefer for marketing purposes
-    # In these cases we'll attempt to gather additional information about the 
+    # In these cases we'll attempt to gather additional information about the
     # user from their profile.
     #
     # stuff that we can try:
@@ -104,7 +108,7 @@ def language_from_request(request):
     #   example: yahoo.com.mx
     # - referrer data from the request headers
     # -------------------------------------------------------------------------
-    if preferred_language == 'es-419':
+    if preferred_language == "es-419":
         # this is a generic Latin America setting (and the system default for Spanish)
         # that merits further inspection of the user's profile data in order to further
         # narrow down the appropriate region.
@@ -113,9 +117,7 @@ def language_from_request(request):
 
         return preferred_language
 
-
     return preferred_language
-
 
 
 def anchor(element_id: Str, prefered_language="en"):
@@ -139,8 +141,5 @@ def anchor(element_id: Str, prefered_language="en"):
 
     if not locale:
         return {}
-    
-    return {
-        "url": locale.url,
-        "value": locale.value
-    }
+
+    return {"url": locale.url, "value": locale.value}

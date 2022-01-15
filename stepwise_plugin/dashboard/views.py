@@ -23,4 +23,4 @@ def student_dashboard(request):
     if request.user and request.user.is_authenticated:
         set_language_preference(request)
 
-    return redirect(reverse('dashboard'))
+    return redirect(reverse("dashboard"))
