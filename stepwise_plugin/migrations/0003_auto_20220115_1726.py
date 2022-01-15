@@ -8,29 +8,69 @@ import model_utils.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('stepwise_plugin', '0002_locale'),
+        ("stepwise_plugin", "0002_locale"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='MarketingSites',
+            name="MarketingSites",
             fields=[
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('language', models.CharField(choices=[('en', 'English'), ('en-uk', 'English (United Kingdom)'), ('en@lolcat', 'LOLCAT English'), ('en@pirate', 'Pirate English'), ('es-419', 'Español (Latinoamérica)'), ('es-ar', 'Español (Argentina)'), ('es-ec', 'Español (Ecuador)'), ('es-es', 'Español (España)'), ('es-mx', 'Español (México)'), ('es-pe', 'Español (Perú)'), ('pt-br', 'Português (Brasil)'), ('pt-pt', 'Português (Portugal)'), ('it-it', 'Italiano (Italia)'), ('fr', 'Français')], help_text='A language code. Examples: en, en-US, es, es-419, es-MX', max_length=20, primary_key=True, serialize=False)),
-                ('site_url', models.URLField(default='https://stepwisemath.ai', help_text='URL for for anchor tag for this language. Example: https://mx.stepwisemath.ai/contact/')),
+                (
+                    "created",
+                    model_utils.fields.AutoCreatedField(
+                        default=django.utils.timezone.now, editable=False, verbose_name="created"
+                    ),
+                ),
+                (
+                    "modified",
+                    model_utils.fields.AutoLastModifiedField(
+                        default=django.utils.timezone.now, editable=False, verbose_name="modified"
+                    ),
+                ),
+                (
+                    "language",
+                    models.CharField(
+                        choices=[
+                            ("en", "English"),
+                            ("en-uk", "English (United Kingdom)"),
+                            ("en@lolcat", "LOLCAT English"),
+                            ("en@pirate", "Pirate English"),
+                            ("es-419", "Español (Latinoamérica)"),
+                            ("es-ar", "Español (Argentina)"),
+                            ("es-ec", "Español (Ecuador)"),
+                            ("es-es", "Español (España)"),
+                            ("es-mx", "Español (México)"),
+                            ("es-pe", "Español (Perú)"),
+                            ("pt-br", "Português (Brasil)"),
+                            ("pt-pt", "Português (Portugal)"),
+                            ("it-it", "Italiano (Italia)"),
+                            ("fr", "Français"),
+                        ],
+                        help_text="A language code. Examples: en, en-US, es, es-419, es-MX",
+                        max_length=20,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                (
+                    "site_url",
+                    models.URLField(
+                        default="https://stepwisemath.ai",
+                        help_text="URL for for anchor tag for this language. Example: https://mx.stepwisemath.ai/contact/",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.RenameField(
-            model_name='locale',
-            old_name='lang',
-            new_name='language',
+            model_name="locale",
+            old_name="lang",
+            new_name="language",
         ),
         migrations.AlterUniqueTogether(
-            name='locale',
-            unique_together={('element_id', 'language')},
+            name="locale",
+            unique_together={("element_id", "language")},
         ),
     ]
