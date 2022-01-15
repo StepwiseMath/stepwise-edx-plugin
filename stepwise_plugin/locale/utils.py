@@ -31,8 +31,8 @@ def get_marketing_site(request):
     example return value: https://mx.stepwisemath.ai/
     """
     language = language_from_request(request)
-    url = MarketingSites.objects.filter(language=language).first()
-    return url
+    marketing_site = MarketingSites.objects.filter(language=language).first()
+    return marketing_site.site_url
 
 
 def language_from_request(request):

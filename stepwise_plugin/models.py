@@ -39,6 +39,9 @@ class MarketingSites(TimeStampedModel):
     en-US   maps to https://stepwisemath.ai
     """
 
+    class Meta:
+        unique_together = ("language", "province")
+
     language = models.CharField(
         primary_key=True,
         blank=False,
@@ -46,11 +49,21 @@ class MarketingSites(TimeStampedModel):
         max_length=20,
         help_text=_(u"A language code. Examples: en, en-US, es, es-419, es-MX"),
     )
+    province = models.CharField(
+        max_length=20,
+        blank=True,
+        help_text=_(
+            u"A sub-region for the language code. Example: for language code en-US valid possibles include TX, FL, CA, DC, KY, etc."
+        ),
+    )
     site_url = models.URLField(
         default="https://stepwisemath.ai",
         blank=False,
         help_text=_(u"URL for for anchor tag for this language. Example: https://mx.stepwisemath.ai/contact/"),
     )
+
+    def __str__(self):
+        return self.element_id + " - " + self.language + "-" + self.province
 
 
 class Locale(TimeStampedModel):
@@ -85,7 +98,7 @@ class Locale(TimeStampedModel):
     )
 
     def __str__(self):
-        return self.element_id + " - " + self.language
+        return self.element_id + "-" + self.language
 
 
 class Configuration(models.Model):
