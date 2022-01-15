@@ -63,7 +63,7 @@ class MarketingSites(TimeStampedModel):
     )
 
     def __str__(self):
-        return self.element_id + " - " + self.language + "-" + self.province
+        return self.language + "-" + self.province
 
 
 class Locale(TimeStampedModel):
