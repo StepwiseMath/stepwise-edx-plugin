@@ -100,7 +100,7 @@ class Locale(TimeStampedModel):
         return self.element_id + "-" + self.language
 
 
-class Configuration(models.Model):
+class Configuration(TimeStampedModel):
     u"""
     Creates the Rover Stepwise configuration table for api settings.
     """
@@ -113,7 +113,6 @@ class Configuration(models.Model):
         (TEST, _(u"Testing / QA")),
         (PRODUCTION, _(u"Production")),
     )
-
     type = models.CharField(
         max_length=24,
         blank=False,
@@ -123,10 +122,6 @@ class Configuration(models.Model):
         unique=True,
         help_text=_(u"Type of Open edX environment in which this configuration will be used."),
     )
-
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-
     stepwise_host = models.URLField(
         max_length=255, blank=True, help_text=_(u"the URL pointing to the Querium Stepwise Server.")
     )

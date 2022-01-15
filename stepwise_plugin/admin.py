@@ -14,11 +14,6 @@ class LocaleAdmin(admin.ModelAdmin):
 class ConfigurationAdmin(admin.ModelAdmin):
     list_display = [f.name for f in Configuration._meta.get_fields()]
 
-    readonly_fields = (
-        u"created",
-        u"updated",
-    )
-
 
 admin.site.register(MarketingSites, MarketingSitesAdmin)
 admin.site.register(Locale, LocaleAdmin)
