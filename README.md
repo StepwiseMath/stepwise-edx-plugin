@@ -30,6 +30,8 @@ The reverse case. Provides a generalized way to seamlessly map the user from the
 
 ### Localized html anchor tags
 
+Same as above, but for html anchor tags. In addition to the URL mapping, these also require language translation of the text of the html element value, bearing in mind that we need to avoid changes to the edx-platform po files since we do not want to fork the edx-platform repo.
+
 An example usage would be the "Blog" and "Privacy Policy" links in the LMS site footer. The following is added to the Mako template:
 
 ```
@@ -39,13 +41,15 @@ An example usage would be the "Blog" and "Privacy Policy" links in the LMS site 
 
 <% 
 
+  # figure out the best language code to use based on whatever we
+  # know about this user.
   try:
     preferred_language = language_from_request(request) or 'en'
   except:
     preferred_language = 'en'
 
+  # get a Python dict containing the url and element text.
   blog_dict = anchor('stepwise-locale-blog', preferred_language)
-  privacy_dict = anchor('stepwise-locale-privacy', preferred_language)
 %>
 
 ```
