@@ -35,8 +35,8 @@ class StepwisePluginConfig(AppConfig):
         PluginSettings.CONFIG: {
             ProjectType.LMS: {
                 # uncomment these to activate
-                # SettingsType.PRODUCTION: {PluginSettings.RELATIVE_PATH: "settings.production"},
-                # SettingsType.COMMON: {PluginSettings.RELATIVE_PATH: "settings.common"},
+                SettingsType.PRODUCTION: {PluginSettings.RELATIVE_PATH: "settings.production"},
+                SettingsType.COMMON: {PluginSettings.RELATIVE_PATH: "settings.common"},
             }
         },
     }

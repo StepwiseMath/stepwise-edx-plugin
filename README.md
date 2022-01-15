@@ -21,6 +21,9 @@ source code is located in stepwise_plugin/api/
 Uses this Django model: https://web.stepwisemath.ai/admin/stepwise_plugin/configuration/
 
 
+public url to the api: https://web.stepwisemath.ai/stepwise/api/v1/configuration
+
+
 ### Wordpress CTA links
 
 Provides a means to embed localization information about the user in CTA buttons that send the user from Wordpress to Open edX. The most common url presently is: https://web.stepwisemath.ai/stepwise/dashboard?language=es-419

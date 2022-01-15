@@ -8,6 +8,8 @@ from path import Path as path
 import environ
 import os
 
+from django.conf import settings
+
 # path to this file.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
@@ -21,5 +23,9 @@ TEMPLATES_DIR = APP_ROOT / "templates"
 def plugin_settings(settings):
     """
     Injects local settings into django settings
+
+    see: https://stackoverflow.com/questions/56129708/how-to-force-redirect-uri-to-use-https-with-python-social-app
     """
-    pass
+        
+    settings.SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+    #SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')    
