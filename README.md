@@ -1,5 +1,4 @@
 # StepWise Open edX Plugin
-===============================
 
 [![hack.d Lawrence McDaniel](https://img.shields.io/badge/hack.d-Lawrence%20McDaniel-orange.svg)](https://lawrencemcdaniel.com)
 
@@ -15,7 +14,7 @@ See:
 ### Querium StepWise Configuration API
 
 Assigns the StepWise api server to use for the Open edX instance on which this plugin is installed.
-The api endpoing is: https://web.stepwisemath.ai/stepwise/api/v1/configuration
+The api endpoint is: https://web.stepwisemath.ai/stepwise/api/v1/configuration
 
 source code is located in stepwise_plugin/api/
 
