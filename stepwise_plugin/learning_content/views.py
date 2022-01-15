@@ -18,7 +18,8 @@ def list_by_locale(request):
     if request.user and request.user.is_authenticated:
         preferred_language = get_user_preference(request.user, LANGUAGE_KEY)
 
-    if preferred_language == 'es-419':
-        redirect('https://mx.stepwisemath.ai/learning-content/') 
 
-    redirect('https://stepwisemath.ai/learning-content/') 
+    if preferred_language == 'es-419':
+        return redirect('https://mx.stepwisemath.ai/learning-content/') 
+
+    return redirect('https://stepwisemath.ai/learning-content/') 
