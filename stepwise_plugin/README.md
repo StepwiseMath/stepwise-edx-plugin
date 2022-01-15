@@ -1,4 +1,4 @@
-StepWise Plugin for Open edX
+Querium StepWise Plugin for Open edX
 ============================
 [![hack.d Lawrence McDaniel](https://img.shields.io/badge/hack.d-Lawrence%20McDaniel-orange.svg)](https://lawrencemcdaniel.com)
 

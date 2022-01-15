@@ -6,7 +6,7 @@ from .models import Configuration, Locale
 class LocaleAdmin(admin.ModelAdmin):
     list_display = (
         "element_id",
-        "lang",
+        "language",
         "url",
         "value",
     )

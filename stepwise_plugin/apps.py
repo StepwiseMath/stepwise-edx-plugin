@@ -17,7 +17,11 @@ log = logging.getLogger(__name__)
 class StepwisePluginConfig(AppConfig):
     name = "stepwise_plugin"
     label = "stepwise_plugin"
-    verbose_name = "StepWise plugin for Open edX"
+
+    # This is the text that appears in the Django admin console in all caps
+    # as the title box encapsulating all Django app models that are registered
+    # in admin.py.
+    verbose_name = "Querium StepWise plugin for Open edX"
 
     # See: https://edx.readthedocs.io/projects/edx-django-utils/en/latest/edx_django_utils.plugins.html
     plugin_app = {

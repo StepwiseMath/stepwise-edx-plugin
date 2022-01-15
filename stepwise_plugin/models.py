@@ -4,6 +4,52 @@ from django.utils.translation import ugettext as _
 
 from model_utils.models import TimeStampedModel
 
+LMS_LANGUAGES = (
+    ("en", "English"),
+    ("es-419", "Español (Latinoamérica)"),  # Spanish (Latin America)
+    ("pt-pt", "Português (Portugal)"),  # Portuguese (Portugal)
+)
+
+ALL_LANGUAGES = (
+    ("en", "English"),
+    ('en-uk', 'English (United Kingdom)'),  # English (United Kingdom)
+    ('en@lolcat', 'LOLCAT English'),  # LOLCAT English
+    ('en@pirate', 'Pirate English'),  # Pirate English
+    ("es-419", "Español (Latinoamérica)"),  # Spanish (Latin America)
+    ('es-ar', 'Español (Argentina)'),  # Spanish (Argentina)
+    ('es-ec', 'Español (Ecuador)'),  # Spanish (Ecuador)
+    ('es-es', 'Español (España)'),  # Spanish (Spain)
+    ('es-mx', 'Español (México)'),  # Spanish (Mexico)
+    ('es-pe', 'Español (Perú)'),  # Spanish (Peru)
+    ('pt-br', 'Português (Brasil)'),  # Portuguese (Brazil)
+    ('pt-pt', 'Português (Portugal)'),  # Portuguese (Portugal)
+    ('it-it', 'Italiano (Italia)'),  # Italian (Italy)
+    ('fr', 'Français'),  # French
+)
+
+
+class MarketingSites(TimeStampedModel):
+    """
+    Registers a marketing site by language code.
+    Examples:
+    -------------------
+    es-419  maps to https://mx.stepwisemath.ai
+    es-MX   maps to https://mx.stepwisemath.ai
+    en      maps to https://stepwisemath.ai
+    en-US   maps to https://stepwisemath.ai
+    """
+    language = models.CharField(
+        primary_key=True,
+        blank=False,
+        choices=ALL_LANGUAGES,
+        max_length=20,
+        help_text=_(u"A language code. Examples: en, en-US, es, es-419, es-MX"),
+    )
+    site_url = models.URLField(
+        default="https://stepwisemath.ai",
+        blank=False,
+        help_text=_(u"URL for for anchor tag for this language. Example: https://mx.stepwisemath.ai/contact/"),
+    )
 
 class Locale(TimeStampedModel):
     """
@@ -12,23 +58,17 @@ class Locale(TimeStampedModel):
     such as footer links.
     """
 
-    languages = (
-        ("en", "English"),
-        ("es-419", "Español (Latinoamérica)"),  # Spanish (Latin America)
-        ("pt-pt", "Português (Portugal)"),  # Portuguese (Portugal)
-    )
-
     class Meta:
-        unique_together = ("element_id", "lang")
+        unique_together = ("element_id", "language")
 
     element_id = models.CharField(
         blank=False,
         max_length=255,
         help_text=_(u"An html element id. Example: stepwise-locale-contact"),
     )
-    lang = models.CharField(
+    language = models.CharField(
         blank=False,
-        choices=languages,
+        choices=LMS_LANGUAGES,
         max_length=20,
         help_text=_(u"A language code. Examples: en, en-US, es, es-419, es-MX"),
     )
@@ -43,7 +83,7 @@ class Locale(TimeStampedModel):
     )
 
     def __str__(self):
-        return self.element_id + " - " + self.lang
+        return self.element_id + " - " + self.language
 
 
 class Configuration(models.Model):
