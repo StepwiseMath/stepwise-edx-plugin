@@ -49,6 +49,8 @@ def student_dashboard(request):
     # if there's an ´enroll´ param then parse it and try to enroll the the user in the course
     enroll_in = request.GET.get("enroll")
     if enroll_in:
+        log.info("student_dashboard() received enroll param of {enroll_in}".format(enroll_in=enroll_in))
+
         course_key = None
         course = None
 

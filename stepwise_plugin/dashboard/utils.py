@@ -18,6 +18,14 @@ def set_language_preference(request):
     if not request.user or not request.user.is_authenticated:
         return None
 
+    language_param = request.GET.get("language")
+    if language_param:
+        log.info(
+            "set_language_preference() found language url param {language_param} in the request object".format(
+                language_param=language_param
+            )
+        )
+
     preferred_language = get_user_preference(request.user, LANGUAGE_KEY)
     if preferred_language:
         log.info(
@@ -37,7 +45,6 @@ def set_language_preference(request):
     log.info("set_language_preference() available languages are: {languages}".format(languages=languages))
 
     # 2.) language code might be passed in as a parameter
-    language_param = request.GET.get("language")
     if language_param:
         closest_lang = get_closest_released_language(language_param)
         if not closest_lang:
