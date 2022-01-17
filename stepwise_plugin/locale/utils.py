@@ -49,7 +49,7 @@ def language_from_request(request):
     try:
         preferred_language = get_user_preference(request.user, LANGUAGE_KEY)
         log.info(
-            "language_from_request() found language preference of {preferred_language} for username {username}".format(
+            "language_from_request() found an existing language preference of {preferred_language} for username {username}".format(
                 preferred_language=preferred_language, username=request.user.username
             )
         )

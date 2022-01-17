@@ -37,7 +37,7 @@ def student_dashboard(request):
     "enroll": a CourseKey. we should attempt to enroll the user in this course
 
     example url:
-    https://web.stepwisemath.ai/stepwise/dashboard?lang=ex-419,enroll=edX+DemoX+Demo_Course
+    https://web.stepwisemath.ai/stepwise/dashboard?language=en-US&enroll=course-v1%3AedX%2BDemoX%2BDemo_Course
     """
 
     # should always be true, but it'd potentially be a trainwreck if we called

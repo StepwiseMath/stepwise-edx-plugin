@@ -16,12 +16,13 @@ def set_language_preference(request):
     2.) the 2-character subdomain of the referer. example mx.stepwisemath.ai == 'mx'
     """
     if not request.user or not request.user.is_authenticated:
+        log.info("set_language_preference() - anonymous user, exiting.")
         return None
 
     language_param = request.GET.get("language")
     if language_param:
         log.info(
-            "set_language_preference() found language url param {language_param} in the request object".format(
+            "set_language_preference() found language url param of {language_param} in the request object".format(
                 language_param=language_param
             )
         )
@@ -29,7 +30,7 @@ def set_language_preference(request):
     preferred_language = get_user_preference(request.user, LANGUAGE_KEY)
     if preferred_language:
         log.info(
-            "set_language_preference() user {username} (1) prefers language {preferred_language}".format(
+            "set_language_preference() found an existing saved language preference for user {username} of {preferred_language}. Ignoring url param.".format(
                 username=request.user.username, preferred_language=preferred_language
             )
         )
@@ -48,7 +49,7 @@ def set_language_preference(request):
     if language_param:
         closest_lang = get_closest_released_language(language_param)
         if not closest_lang:
-            log.info("set_language_preference() no available language, quiting.")
+            log.info("set_language_preference() no available language, exiting.")
             return None
         log.info(
             "stepwise_plugin.utils.set_language_preference() (2) detected language param={language_param}. closest installed={closest_lang}".format(
