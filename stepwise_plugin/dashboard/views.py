@@ -76,9 +76,22 @@ def student_dashboard(request):
             try:
                 if not CourseEnrollment.is_enrolled(request.user, course_key=course_key):
                     CourseEnrollment.enroll(request.user, course_key=course_key)
+                else:
+                    log.info(
+                        "student_dashboard() user {username} is already enrolled in course {enroll_in}.".format(
+                            username=request.user.username, enroll_in=enroll_in
+                        )
+                    )
 
                 if course.has_started():
                     return redirect(reverse("openedx.course_experience.course_home", kwargs={"course_id": course_key}))
+                else:
+                    log.info(
+                        "student_dashboard() course {enroll_in} has not yet started. Redirecting the user to their dashboard.".format(
+                            enroll_in=enroll_in
+                        )
+                    )
+
             except Exception as e:
                 log.warning(
                     "student_dashboard() encountered a handled exception while attempting to enroll user {username} in the course {enroll_in}. Exception: {e}".format(
