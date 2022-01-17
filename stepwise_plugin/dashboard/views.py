@@ -74,12 +74,9 @@ def student_dashboard(request):
                 )
 
             try:
-                # attempt to pre-enroll the user using the default enrollment mode.
-                # if the user is already enrolled then this will be a no-op
-                #
-                # Either way however, we want to redirect the user to the course summary page,
-                # assuming that the course has already started.
-                CourseEnrollment.enroll(request.user, course_key=course_key)
+                if not CourseEnrollment.is_enrolled(request.user, course_key=course_key):
+                    CourseEnrollment.enroll(request.user, course_key=course_key)
+
                 if course.has_started():
                     return redirect(reverse("openedx.course_experience.course_home", kwargs={"course_id": course_key}))
             except Exception as e:
