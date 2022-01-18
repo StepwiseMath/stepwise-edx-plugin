@@ -10,6 +10,8 @@ Usage:  To intercept http requests so that can do things like:
             - update user profile data
 """
 import logging
+import json
+
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -39,6 +41,17 @@ def student_dashboard(request):
     example url:
     https://web.stepwisemath.ai/stepwise/dashboard?language=en-US&enroll=course-v1%3AedX%2BDemoX%2BDemo_Course
     """
+
+    # this is a sneaky way of inferring that the user had to authenticate
+    # while en route to this view, due to the @login_required.
+    if request.META["HTTP_HOST"] == "web.stepwisemath.ai":
+        log.info("student_dashboard() - initiating after user authentication for {username}".format(
+            username=request.user.username
+        ))
+    else:
+        log.info("student_dashboard() - initiating after referal from host {host}".format(
+            host=request.request.META["HTTP_HOST"]
+        ))
 
     # should always be true, but it'd potentially be a trainwreck if we called
     # set_language_preference() at scale on the Django anonymous user.

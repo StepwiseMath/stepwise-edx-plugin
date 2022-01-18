@@ -47,12 +47,13 @@ def language_from_request(request):
     # 1.) try to get the Open edX language setting chosen explicitely by the user
     #     using the language drop-down in the LMS site header.
     try:
-        preferred_language = get_user_preference(request.user, LANGUAGE_KEY)
-        log.info(
-            "language_from_request() found an existing language preference of {preferred_language} for username {username}".format(
-                preferred_language=preferred_language, username=request.user.username
+        if request.user and request.user.is_authenticated:
+            preferred_language = get_user_preference(request.user, LANGUAGE_KEY)
+            log.info(
+                "language_from_request() found an existing language preference of {preferred_language} for username {username}".format(
+                    preferred_language=preferred_language, username=request.user.username
+                )
             )
-        )
     except:
         # is the user is not authenticated or if the user is logging out
         # then this is prone to raising an exception.
