@@ -10,7 +10,7 @@ Usage:  To intercept http requests so that can do things like:
             - update user profile data
 """
 import logging
-import json
+from urllib.parse import urlparse
 
 from django.shortcuts import redirect
 from django.urls import reverse
@@ -42,16 +42,31 @@ def student_dashboard(request):
     https://web.stepwisemath.ai/stepwise/dashboard?language=en-US&enroll=course-v1%3AedX%2BDemoX%2BDemo_Course
     """
 
+    enroll_in = request.GET.get("enroll")
+    language_param = request.GET.get("language")
+    username=request.user.username
+    platform=request.META["HTTP_SEC_CH_UA_PLATFORM"]
+    referer = urlparse(request.META.get("HTTP_REFERER", "Direct"))
+    host = request.META["HTTP_HOST"]
+
     # this is a sneaky way of inferring that the user had to authenticate
     # while en route to this view, due to the @login_required.
-    if request.META["HTTP_HOST"] == "web.stepwisemath.ai":
+    if referer.netloc == "web.stepwisemath.ai":
         log.info("student_dashboard() - initiating after user authentication for {username}".format(
             username=request.user.username
         ))
     else:
-        log.info("student_dashboard() - initiating after referal from host {host}".format(
-            host=request.request.META["HTTP_HOST"]
+        log.info("student_dashboard() - initiating after referal {referer}".format(
+            referer=referer.netloc
         ))
+    
+    log.info("student_dashboard() - user {username} is accessing StepWise via {platform}. Referer is {referer}. Received a language preference of {language_param} and a pre-enrollment course key of {enroll_in}".format(
+        username=username,
+        platform=platform,
+        referer=referer.netloc,
+        language_param=language_param,
+        enroll_in=enroll_in
+    ))
 
     # should always be true, but it'd potentially be a trainwreck if we called
     # set_language_preference() at scale on the Django anonymous user.
@@ -60,7 +75,6 @@ def student_dashboard(request):
         set_language_preference(request)
 
     # if there's an ´enroll´ param then parse it and try to enroll the the user in the course
-    enroll_in = request.GET.get("enroll")
     if enroll_in:
         log.info("student_dashboard() received enroll param of {enroll_in}".format(enroll_in=enroll_in))
 
