@@ -44,29 +44,31 @@ def student_dashboard(request):
 
     enroll_in = request.GET.get("enroll")
     language_param = request.GET.get("language")
-    username=request.user.username
-    platform=request.META.get("HTTP_SEC_CH_UA_PLATFORM") or request.META.get("HTTP_USER_AGENT")
+    username = request.user.username
+    platform = request.META.get("HTTP_SEC_CH_UA_PLATFORM") or request.META.get("HTTP_USER_AGENT")
     referer = urlparse(request.META.get("HTTP_REFERER", "Direct"))
-    #host = request.META.get("HTTP_HOST")
+    # host = request.META.get("HTTP_HOST")
 
     # this is a sneaky way of inferring that the user had to authenticate
     # while en route to this view, due to the @login_required.
     if referer.netloc == "web.stepwisemath.ai":
-        log.info("student_dashboard() - initiating after user authentication for {username}".format(
-            username=request.user.username
-        ))
+        log.info(
+            "student_dashboard() - initiating after user authentication for {username}".format(
+                username=request.user.username
+            )
+        )
     else:
-        log.info("student_dashboard() - initiating after referal {referer}".format(
-            referer=referer.netloc
-        ))
-    
-    log.info("student_dashboard() - user {username} is accessing StepWise via {platform}. Referer is {referer}. Received a language preference of {language_param} and a pre-enrollment course key of {enroll_in}".format(
-        username=username,
-        platform=platform,
-        referer=referer.netloc,
-        language_param=language_param,
-        enroll_in=enroll_in
-    ))
+        log.info("student_dashboard() - initiating after referal {referer}".format(referer=referer.netloc))
+
+    log.info(
+        "student_dashboard() - user {username} is accessing StepWise via {platform}. Referer is {referer}. Received a language preference of {language_param} and a pre-enrollment course key of {enroll_in}".format(
+            username=username,
+            platform=platform,
+            referer=referer.netloc,
+            language_param=language_param,
+            enroll_in=enroll_in,
+        )
+    )
 
     # should always be true, but it'd potentially be a trainwreck if we called
     # set_language_preference() at scale on the Django anonymous user.
