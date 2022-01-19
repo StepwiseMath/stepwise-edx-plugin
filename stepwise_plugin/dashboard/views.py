@@ -85,7 +85,7 @@ def student_dashboard(request):
 
         try:
             course_key = CourseKey.from_string(enroll_in)
-        except:
+        except Exception:
             log.warning(
                 "student_dashboard() received an invalid CourseKey string in the enroll url param. Ignoring. value was: {enroll_in}".format(
                     enroll_in=enroll_in

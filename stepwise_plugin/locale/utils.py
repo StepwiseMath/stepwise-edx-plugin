@@ -54,7 +54,7 @@ def language_from_request(request):
                     preferred_language=preferred_language, username=request.user.username
                 )
             )
-    except:
+    except Exception:
         # is the user is not authenticated or if the user is logging out
         # then this is prone to raising an exception.
         pass
@@ -80,7 +80,7 @@ def language_from_request(request):
         try:
             if request.LANGUAGE_CODE:
                 return request.LANGUAGE_CODE
-        except:
+        except Exception:
             pass
 
     # 4.) Try to grab the Django-assigned default language code, if its assigned.
@@ -89,7 +89,7 @@ def language_from_request(request):
             # the Django default language
             if request.LANGUAGE:
                 return request.LANGUAGE
-        except:
+        except Exception:
             pass
 
     # 5.) All possible methods failed, so use the system default of English.

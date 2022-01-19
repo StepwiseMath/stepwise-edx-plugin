@@ -50,7 +50,7 @@ An example usage would be the "Blog" and "Privacy Policy" links in the LMS site 
   from stepwise_plugin.locale.utils import anchor, language_from_request
 %>
 
-<% 
+<%
 
   # figure out the best language code to use based on whatever we
   # know about this user.
@@ -92,9 +92,9 @@ pip install /home/ubuntu/stepwise_plugin
 ```python
 # DO NOT!! add this near the bottom of /edx/app/edxapp/edx-platform/lms/envs/common.py
 
-# NO! NO! NO! NO! NO! NO! NO! NO! NO! NO! NO! NO! 
+# NO! NO! NO! NO! NO! NO! NO! NO! NO! NO! NO! NO!
 INSTALLED_APPS.extend('stepwise_plugin')    # DO NOT DO THIS!!!!!!
-# NO! NO! NO! NO! NO! NO! NO! NO! NO! NO! NO! NO! 
+# NO! NO! NO! NO! NO! NO! NO! NO! NO! NO! NO! NO!
 
 # it turns out that Open edX finds this package of its own accord.
 # magical!!! :O
@@ -117,7 +117,7 @@ cd ~/edx-platform
 * run `black` on modified code before committing.
 * run `flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics`
 * run `flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics`
-* run `pre-commit run --all-files` before pushing.
+* run `pre-commit run --all-files` before pushing. see: https://pre-commit.com/
 
 #### edx-platform dependencies
 
@@ -152,5 +152,3 @@ The stepwise_edxapi module adds ipython and django-extensions to the stack.  It 
 ```
 tutor local exec lms ./manage.py lms shell_plus
 ```
-
-test pre-commit
