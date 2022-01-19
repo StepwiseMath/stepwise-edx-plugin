@@ -112,6 +112,21 @@ cd ~/edx-platform
 ```
 
 
+### Local development
+
+* Use the same virtual environment that you use for edx-platform
+* Set your Python interpreter to 3.8x
+* install black: https://pypi.org/project/black/
+* install flake8: https://flake8.pycqa.org/en/latest/
+
+```bash
+# Run these from within your edx-platform virtual environment
+pip3 install pre-commit
+pre-commit install
+pip3 install black
+python3 -m pip install flake8
+```
+
 ### Local development good practices
 
 * run `black` on modified code before committing.
