@@ -152,3 +152,5 @@ The stepwise_edxapi module adds ipython and django-extensions to the stack.  It 
 ```
 tutor local exec lms ./manage.py lms shell_plus
 ```
+
+test pre-commit
