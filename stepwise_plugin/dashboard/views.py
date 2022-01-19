@@ -45,9 +45,9 @@ def student_dashboard(request):
     enroll_in = request.GET.get("enroll")
     language_param = request.GET.get("language")
     username=request.user.username
-    platform=request.META.get("HTTP_SEC_CH_UA_PLATFORM")
+    platform=request.META.get("HTTP_SEC_CH_UA_PLATFORM") or request.META.get("HTTP_USER_AGENT")
     referer = urlparse(request.META.get("HTTP_REFERER", "Direct"))
-    host = request.META.get("HTTP_HOST")
+    #host = request.META.get("HTTP_HOST")
 
     # this is a sneaky way of inferring that the user had to authenticate
     # while en route to this view, due to the @login_required.
