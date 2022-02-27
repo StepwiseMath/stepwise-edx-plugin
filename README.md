@@ -2,12 +2,15 @@
 
 [![hack.d Lawrence McDaniel](https://img.shields.io/badge/hack.d-Lawrence%20McDaniel-orange.svg)](https://lawrencemcdaniel.com)
 
-See:
+|
+.. image:: https://avatars.githubusercontent.com/u/40179672
+  :target: https://openedx.org/
+  :alt: OPEN edX
+  :width: 75px
+  :align: center
 
-- [Open edX Reference Documentation](https://openedx.atlassian.net/wiki/spaces/AC/pages/28967836/Feature
-+Plugins+for+edX+Platform)
-- [Reference project - edx-bulk-grades](https://github.com/openedx/edx-bulk-grades/)
 
+Implements custom features for Open edX LMS and Studo using the new [pluggable extensibility](https://blog.lawrencemcdaniel.com/getting-started-with-open-edx-plugin-architecture/) model.
 
 ## Implements the following:
 
