@@ -5,7 +5,7 @@
 ![Open edX](https://avatars.githubusercontent.com/u/40179672)
 
 
-Implements custom features for Open edX LMS and Studo using the new [pluggable extensibility](https://blog.lawrencemcdaniel.com/getting-started-with-open-edx-plugin-architecture/) model.
+Implements custom features for the Open edX LMS and Studio applications using the new [pluggable extensibility](https://blog.lawrencemcdaniel.com/getting-started-with-open-edx-plugin-architecture/) model.
 
 ## Implements the following:
 
