@@ -2,12 +2,7 @@
 
 [![hack.d Lawrence McDaniel](https://img.shields.io/badge/hack.d-Lawrence%20McDaniel-orange.svg)](https://lawrencemcdaniel.com)
 
-|
-.. image:: https://avatars.githubusercontent.com/u/40179672
-  :target: https://openedx.org/
-  :alt: OPEN edX
-  :width: 75px
-  :align: center
+![Open edX](https://avatars.githubusercontent.com/u/40179672)
 
 
 Implements custom features for Open edX LMS and Studo using the new [pluggable extensibility](https://blog.lawrencemcdaniel.com/getting-started-with-open-edx-plugin-architecture/) model.
