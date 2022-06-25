@@ -12,7 +12,6 @@ class Command(BaseCommand):  # lint-amnesty, pylint: disable=missing-class-docst
             dest="language",
             default="en",
             required=False,
-            nargs=1,
             help="A language code. Examples: en, en-US, es, es-419, es-MX. Default: en",
         )
         parser.add_argument(
@@ -20,7 +19,6 @@ class Command(BaseCommand):  # lint-amnesty, pylint: disable=missing-class-docst
             dest="province",
             default='',
             required=False,
-            nargs=1,
             help="A sub-region for the language code. Example: for language code en-US valid possibles include TX, FL, CA, DC, KY, etc. Default: ''",
         )
         parser.add_argument(
@@ -28,7 +26,6 @@ class Command(BaseCommand):  # lint-amnesty, pylint: disable=missing-class-docst
             dest="site_url",
             default="https://stepwisemath.ai/",
             required=False,
-            nargs=1,
             help="Base URL for the marketing site for this language. Default: https://stepwisemath.ai/",
         )
 

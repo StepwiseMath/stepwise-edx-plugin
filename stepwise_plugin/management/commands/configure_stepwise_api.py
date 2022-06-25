@@ -12,7 +12,6 @@ class Command(BaseCommand):  # lint-amnesty, pylint: disable=missing-class-docst
             dest="host",
             default="https://stepwiseai01.querium.com/webMathematica/api/",
             required=False,
-            nargs=1,
             help="URL to the Stepwise API host. Default: https://stepwiseai01.querium.com/webMathematica/api/",
         )
         parser.add_argument(
@@ -20,7 +19,6 @@ class Command(BaseCommand):  # lint-amnesty, pylint: disable=missing-class-docst
             dest="environment",
             default="Production",
             required=False,
-            nargs=1,
             help="Which Open edX environment to configure. Options: Development, Testing / QA, Production,  Default: Production",
         )
 
