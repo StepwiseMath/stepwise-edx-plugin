@@ -10,25 +10,21 @@ class Command(BaseCommand):  # lint-amnesty, pylint: disable=missing-class-docst
         parser.add_argument(
             "--element_id",
             dest="element_id",
-            required=True,
             help="An html element id. Example: stepwise-locale-contact",
         )
         parser.add_argument(
             "--language",
             dest="language",
-            required=True,
             help="A language code. Examples: en, en-US, es, es-419, es-MX",
         )
         parser.add_argument(
             "--url",
             dest="url",
-            required=True,
             help="URL for for anchor tag for this language. Example: https://mx.stepwisemath.ai/contact/",
         )
         parser.add_argument(
             "--value",
             dest="value",
-            required=True,
             help="The text value of this html element. Example: Contacto",
         )
 
