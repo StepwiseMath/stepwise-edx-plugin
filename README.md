@@ -69,7 +69,15 @@ and the link itself would take the form
     <a id="stepwise-locale-blog" href="${blog_dict.get('url')}">${blog_dict.get('value')}</a>
 ```
 
+### manage.py commands
 
+```bash
+
+./manage.py lms configure_stepwise_api --host 'https://stepwiseai01.querium.com/webMathematica/api/' --environment 'Production'
+./manage.py lms configure_stepwise_marketing_site --language en --site_url 'https://stepwisemath.ai/'
+./manage.py lms configure_stepwise_locale --element_id 'stepwise-locale-contact' --language 'es-419' --url 'https://mx.stepwisemath.ai/contact/' --value 'Contacto'
+
+```
 
 ## Getting Started
 
