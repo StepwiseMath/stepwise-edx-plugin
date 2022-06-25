@@ -73,8 +73,13 @@ and the link itself would take the form
 
 ```bash
 
+# Create or update a Stepwise API server host configuration
 ./manage.py lms configure_stepwise_api --host 'https://stepwiseai01.querium.com/webMathematica/api/' --environment 'Production'
+
+# Create or update a Stepwise marketing site configuration
 ./manage.py lms configure_stepwise_marketing_site --language en --site_url 'https://stepwisemath.ai/'
+
+# Create or update Stepwise marketing site local html elements
 ./manage.py lms configure_stepwise_locale --element_id 'stepwise-locale-contact' --language 'es-419' --url 'https://mx.stepwisemath.ai/contact/' --value 'Contacto'
 
 ```
