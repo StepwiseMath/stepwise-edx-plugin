@@ -18,7 +18,7 @@ class Command(BaseCommand):  # lint-amnesty, pylint: disable=missing-class-docst
         parser.add_argument(
             "--province",
             dest="province",
-            default="",
+            default=None,
             required=False,
             nargs=1,
             help="A sub-region for the language code. Example: for language code en-US valid possibles include TX, FL, CA, DC, KY, etc.",
