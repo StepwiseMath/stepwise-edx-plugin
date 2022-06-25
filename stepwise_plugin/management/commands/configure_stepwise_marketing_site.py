@@ -18,10 +18,10 @@ class Command(BaseCommand):  # lint-amnesty, pylint: disable=missing-class-docst
         parser.add_argument(
             "--province",
             dest="province",
-            default=None,
+            default='',
             required=False,
             nargs=1,
-            help="A sub-region for the language code. Example: for language code en-US valid possibles include TX, FL, CA, DC, KY, etc.",
+            help="A sub-region for the language code. Example: for language code en-US valid possibles include TX, FL, CA, DC, KY, etc. Default: ''",
         )
         parser.add_argument(
             "--site_url",
@@ -36,6 +36,6 @@ class Command(BaseCommand):  # lint-amnesty, pylint: disable=missing-class-docst
 
         MarketingSites.objects.update_or_create(
             language=options.get("language"),
-            province=options.get("province"),
+            province='',
             site_url=options.get("site_url"),
         )
