@@ -19,7 +19,7 @@ class Command(BaseCommand):  # lint-amnesty, pylint: disable=missing-class-docst
             dest="environment",
             default="Production",
             required=False,
-            help="Which Open edX environment to configure. Options: Development, Testing / QA, Production,  Default: Production",
+            help="Which Open edX environment to configure. Options: dev, test, prod,  Default: prod",
         )
 
     def handle(self, *args, **options):
