@@ -25,5 +25,6 @@ class Command(BaseCommand):  # lint-amnesty, pylint: disable=missing-class-docst
     def handle(self, *args, **options):
 
         config = Configuration.objects.get_or_create(type=options.get("environment"))
-        config.stepwise_host = options.get("host")
-        config.save()
+        rec = config[0]
+        rec.stepwise_host = options.get("host")
+        rec.save()
