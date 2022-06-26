@@ -31,8 +31,6 @@ class Command(BaseCommand):  # lint-amnesty, pylint: disable=missing-class-docst
 
     def handle(self, *args, **options):
 
-        MarketingSites.objects.update_or_create(
-            language=options.get("language"),
-            province='',
-            site_url=options.get("site_url"),
-        )
+        config = MarketingSites.objects.get_or_create(language=options.get("language"), province='')[0]
+        config.site_url = options.get("site_url")
+        config.save()
