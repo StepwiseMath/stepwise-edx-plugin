@@ -42,4 +42,4 @@ class StepwisePluginConfig(AppConfig):
     }
 
     def ready(self):
-        log.debug("{label} is ready.".format(label=self.label))
+        log.info("{label} is ready.".format(label=self.label))

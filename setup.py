@@ -1,13 +1,31 @@
 # pylint: disable=open-builtin
-from __future__ import absolute_import, print_function, unicode_literals
-
+import io
 import os
-
 from setuptools import find_packages, setup
-from version import __version__
 
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
+
+HERE = os.path.abspath(os.path.dirname(__file__))
+
+
+def load_readme():
+    with io.open(os.path.join(HERE, "README.rst"), "rt", encoding="utf8") as f:
+        return f.read()
+
+
+def load_about():
+    about = {}
+    with io.open(
+        os.path.join(HERE, "stepwise_plugin", "__about__.py"),
+        "rt",
+        encoding="utf-8",
+    ) as f:
+        exec(f.read(), about)  # pylint: disable=exec-used
+    return about
+
+
+ABOUT = load_about()
 
 
 def load_requirements(*requirements_paths):
@@ -40,28 +58,42 @@ def is_requirement(line):
     )
 
 
-README = open(os.path.join(os.path.dirname(__file__), "README.md")).read()
-CHANGELOG = open(os.path.join(os.path.dirname(__file__), "CHANGELOG.rst")).read()
-
 print("Found packages: {packages}".format(packages=find_packages()))
 
 print("requirements found: {requirements}".format(requirements=load_requirements("requirements/common.in")))
 
 setup(
     name="stepwise-plugin",
-    version=__version__,
-    packages=find_packages(),
-    package_data={"": ["*.html"]},  # include any Mako templates found in this repo.
-    include_package_data=True,
+    version=ABOUT["__version__"],
+    url="https://github.com/StepwiseMath/stepwise-edx-plugin",
+    project_urls={
+        "Code": "https://github.com/StepwiseMath/stepwise-edx-plugin",
+        "Issue tracker": "https://github.com/StepwiseMath/stepwise-edx-plugin/issues",
+        "Community": "https://stepwisemath.ai",
+    },
     license="Proprietary",
-    description="Django plugin to enhance feature set of base Open edX platform.",
-    long_description="",
     author="Lawrence McDaniel",
     author_email="lpm0073@gmail.com",
-    url="https://github.com/QueriumCorp/stepwise-openedx-plugin",
-    install_requires=load_requirements("requirements/common.in"),
+    description="Django plugin to add Stepwise Math custom features to Open edX platform.",
+    long_description=load_readme(),
+    packages=find_packages(),
+    include_package_data=True,
+    package_data={"": ["*.html"]},  # include any Mako templates found in this repo.
     zip_safe=False,
-    keywords="Django, Open edX, StepWise",
+    keywords="Python, Django, Open edX, StepWise Math",
+    python_requires=">=3.7",
+    install_requires=load_requirements("requirements/common.in"),
+    entry_points={
+        # mcdaniel aug-2021
+        #
+        # IMPORTANT: ensure that this entry_points coincides with that of edx-platform
+        #            and also that you are not introducing any name collisions.
+        # https://github.com/openedx/edx-platform/blob/master/setup.py#L88
+        "lms.djangoapp": [
+            "stepwise_plugin = stepwise_plugin.apps:StepwisePluginConfig",
+        ],
+        "cms.djangoapp": [],
+    },
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Framework :: Django",
@@ -75,18 +107,9 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
     ],
-    entry_points={
-        # mcdaniel aug-2021
-        #
-        # IMPORTANT: ensure that this entry_points coincides with that of edx-platform
-        #            and also that you are not introducing any name collisions.
-        # https://github.com/openedx/edx-platform/blob/master/setup.py#L88
-        "lms.djangoapp": [
-            "stepwise_plugin = stepwise_plugin.apps:StepwisePluginConfig",
-        ],
-        "cms.djangoapp": [],
-    },
     extras_require={
         "Django": ["Django>=2.2,<2.3"],
     },

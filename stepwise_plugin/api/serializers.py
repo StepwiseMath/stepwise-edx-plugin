@@ -1,4 +1,3 @@
-from __future__ import absolute_import
 from rest_framework import serializers
 from stepwise_plugin.models import Configuration
 
