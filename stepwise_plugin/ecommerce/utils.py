@@ -7,8 +7,8 @@ import datetime
 import pytz
 
 # django stuff
-from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
+from django.conf import settings
 
 # open edx stuff
 from opaque_keys.edx.keys import CourseKey
@@ -20,7 +20,6 @@ from openedx.common.student.models import is_faculty, get_user_by_username_or_em
 from stepwise_plugin.models import EcommerceConfiguration, EcommerceEOPWhitelist
 
 log = logging.getLogger(__name__)
-DEBUG = False
 UTC = pytz.UTC
 
 
@@ -252,5 +251,4 @@ def get_course_deadline_date(request, context):
 
 
 def logger(msg):
-    if DEBUG:
-        log.info(msg)
+    log.info(msg)
