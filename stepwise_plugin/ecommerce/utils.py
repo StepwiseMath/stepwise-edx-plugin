@@ -1,5 +1,5 @@
 """
-Utility methods called from Mako templates in Rover theme.
+Utility methods called from Mako templates in Stepwise Math theme.
 """
 # python  stuff
 import logging

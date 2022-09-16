@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="Configuration",
+            name="EcommerceConfiguration",
             fields=[
                 (
                     "created",
@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
                     "course_id",
                     opaque_keys.edx.django.models.CourseKeyField(
                         default=None,
-                        help_text="Rover Course Key (Opaque Key). Based on Institution, Course, Section identifiers. Example: course-v1:edX+DemoX+Demo_Course",
+                        help_text="Stepwise Math Course Key (Opaque Key). Based on Institution, Course, Section identifiers. Example: course-v1:edX+DemoX+Demo_Course",
                         max_length=255,
                         primary_key=True,
                         serialize=False,
@@ -48,12 +48,12 @@ class Migration(migrations.Migration):
                 ),
             ],
             options={
-                "verbose_name": "Rover E-Commerce Configuration",
-                "verbose_name_plural": "Rover E-Commerce Configurations",
+                "verbose_name": "Stepwise Math E-Commerce Configuration",
+                "verbose_name_plural": "Stepwise Math E-Commerce Configurations",
             },
         ),
         migrations.CreateModel(
-            name="EOPWhitelist",
+            name="EcommerceEOPWhitelist",
             fields=[
                 ("id", models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
                 (
@@ -74,7 +74,7 @@ class Migration(migrations.Migration):
                     models.CharField(
                         choices=[
                             ("eop_student", "EOP Student"),
-                            ("tester", "Rover Tester"),
+                            ("tester", "Stepwise Math Tester"),
                             ("free_retake", "Free Retake"),
                         ],
                         default="eop_student",
@@ -84,8 +84,8 @@ class Migration(migrations.Migration):
                 ),
             ],
             options={
-                "verbose_name": "Rover E-Commerce Payment Exemption",
-                "verbose_name_plural": "Rover E-Commerce Payment Exemptions",
+                "verbose_name": "Stepwise Math E-Commerce Payment Exemption",
+                "verbose_name_plural": "Stepwise Math E-Commerce Payment Exemptions",
             },
         ),
     ]
