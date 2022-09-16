@@ -14,10 +14,11 @@ from django.conf import settings
 from opaque_keys.edx.keys import CourseKey
 from common.lib.xmodule.xmodule.modulestore.django import modulestore
 from lms.djangoapps.courseware.date_summary import VerifiedUpgradeDeadlineDate
-from openedx.common.student.models import is_faculty, get_user_by_username_or_email
+from openedx.common.student.models import get_user_by_username_or_email
 
 # our  stuff
 from stepwise_plugin.models import EcommerceConfiguration, EcommerceEOPWhitelist
+from stepwise_plugin.utils import is_faculty
 
 log = logging.getLogger(__name__)
 UTC = pytz.UTC
@@ -35,6 +36,7 @@ def paywall_should_render(request, context):
     Returns:
         [boolean]: True if the Mako template should fully render all html.
     """
+
     ## this code is moot if the user is not yet authenticated.
     try:
         user = get_user_by_username_or_email(request.user)
