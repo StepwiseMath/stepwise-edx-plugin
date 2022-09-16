@@ -46,19 +46,19 @@ class MarketingSites(TimeStampedModel):
         blank=False,
         choices=ALL_LANGUAGES,
         max_length=20,
-        help_text=_(u"A language code. Examples: en, en-US, es, es-419, es-MX"),
+        help_text=_("A language code. Examples: en, en-US, es, es-419, es-MX"),
     )
     province = models.CharField(
         max_length=20,
         blank=True,
         help_text=_(
-            u"A sub-region for the language code. Example: for language code en-US valid possibles include TX, FL, CA, DC, KY, etc."
+            "A sub-region for the language code. Example: for language code en-US valid possibles include TX, FL, CA, DC, KY, etc."
         ),
     )
     site_url = models.URLField(
         default="https://stepwisemath.ai",
         blank=False,
-        help_text=_(u"URL for for anchor tag for this language. Example: https://mx.stepwisemath.ai/contact/"),
+        help_text=_("URL for for anchor tag for this language. Example: https://mx.stepwisemath.ai/contact/"),
     )
 
     def __str__(self):
@@ -78,22 +78,22 @@ class Locale(TimeStampedModel):
     element_id = models.CharField(
         blank=False,
         max_length=255,
-        help_text=_(u"An html element id. Example: stepwise-locale-contact"),
+        help_text=_("An html element id. Example: stepwise-locale-contact"),
     )
     language = models.CharField(
         blank=False,
         choices=LMS_LANGUAGES,
         max_length=20,
-        help_text=_(u"A language code. Examples: en, en-US, es, es-419, es-MX"),
+        help_text=_("A language code. Examples: en, en-US, es, es-419, es-MX"),
     )
     url = models.URLField(
         blank=False,
-        help_text=_(u"URL for for anchor tag for this language. Example: https://mx.stepwisemath.ai/contact/"),
+        help_text=_("URL for for anchor tag for this language. Example: https://mx.stepwisemath.ai/contact/"),
     )
     value = models.CharField(
         blank=False,
         max_length=255,
-        help_text=_(u"The text value of this html element. Example: Contacto"),
+        help_text=_("The text value of this html element. Example: Contacto"),
     )
 
     def __str__(self):
@@ -101,17 +101,18 @@ class Locale(TimeStampedModel):
 
 
 class Configuration(TimeStampedModel):
-    u"""
+    """
     Creates the Rover Stepwise configuration table for api settings.
     """
-    DEVELOP = u"dev"
-    TEST = u"test"
-    PRODUCTION = u"prod"
+
+    DEVELOP = "dev"
+    TEST = "test"
+    PRODUCTION = "prod"
 
     configuration_type = (
-        (DEVELOP, _(u"Development")),
-        (TEST, _(u"Testing / QA")),
-        (PRODUCTION, _(u"Production")),
+        (DEVELOP, _("Development")),
+        (TEST, _("Testing / QA")),
+        (PRODUCTION, _("Production")),
     )
     type = models.CharField(
         max_length=24,
@@ -120,10 +121,10 @@ class Configuration(TimeStampedModel):
         choices=configuration_type,
         default=DEVELOP,
         unique=True,
-        help_text=_(u"Type of Open edX environment in which this configuration will be used."),
+        help_text=_("Type of Open edX environment in which this configuration will be used."),
     )
     stepwise_host = models.URLField(
-        max_length=255, blank=True, help_text=_(u"the URL pointing to the Querium Stepwise Server.")
+        max_length=255, blank=True, help_text=_("the URL pointing to the Querium Stepwise Server.")
     )
 
     def __str__(self):

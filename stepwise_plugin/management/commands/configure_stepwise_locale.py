@@ -31,8 +31,8 @@ class Command(BaseCommand):  # lint-amnesty, pylint: disable=missing-class-docst
     def handle(self, *args, **options):
 
         Locale.objects.update_or_create(
-            element_id=options['element_id'],
-            language=options['language'],
-            url=options['url'],
-            value=options['value'],
+            element_id=options["element_id"],
+            language=options["language"],
+            url=options["url"],
+            value=options["value"],
         )
