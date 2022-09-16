@@ -22,6 +22,14 @@ on this platform. Of particular interest: get_closest_released_language(target_l
 ## StepWise API - Rover legacy app
 Scaffolded with Django REST Framework Cookie Cutter.
 
+## Stepwise Math Ecommerce Additional Configuration
+
+This module provides course-level configuration for course payment deadline dates and
+for maintaining course/section level lists of EOP students who are exempt from payments.
+
+Data in these tables in referenced by templates in Rover edx-theme repo for decisioning
+on whether to raise the Rover paywall.
+
 admin.py
 --------
 To register models with [Django Admin Console app](https://docs.djangoproject.com/en/2.1/ref/contrib/admin/).

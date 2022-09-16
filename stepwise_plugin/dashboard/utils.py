@@ -52,7 +52,7 @@ def set_language_preference(request):
             log.info("set_language_preference() no available language, exiting.")
             return None
         log.info(
-            "stepwise_plugin.utils.set_language_preference() (2) detected language param={language_param}. closest installed={closest_lang}".format(
+            "stepwise_plugin.dashboard.utils.set_language_preference() (2) detected language param={language_param}. closest installed={closest_lang}".format(
                 language_param=language_param, closest_lang=closest_lang
             )
         )
@@ -79,7 +79,7 @@ def set_language_preference(request):
             log.info("set_language_preference() no available language, quiting.")
             return None
         log.info(
-            "stepwise_plugin.utils.set_language_preference() (3) detected referer_domain={referer_domain}. closest installed={closest_lang}".format(
+            "stepwise_plugin.dashboard.utils.set_language_preference() (3) detected referer_domain={referer_domain}. closest installed={closest_lang}".format(
                 referer_domain=referer_domain, closest_lang=closest_lang
             )
         )

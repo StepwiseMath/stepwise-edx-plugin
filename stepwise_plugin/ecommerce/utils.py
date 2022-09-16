@@ -12,16 +12,15 @@ from django.core.exceptions import ObjectDoesNotExist
 
 # open edx stuff
 from opaque_keys.edx.keys import CourseKey
-from xmodule.modulestore.django import modulestore
-from courseware.date_summary import VerifiedUpgradeDeadlineDate
-from student.models import is_faculty, get_user_by_username_or_email
+from common.lib.xmodule.xmodule.modulestore.django import modulestore
+from lms.djangoapps.courseware.date_summary import VerifiedUpgradeDeadlineDate
+from openedx.common.student.models import is_faculty, get_user_by_username_or_email
 
-# our stuff
-from lms.djangoapps.querium.rover_ecommerce.models import Configuration, EOPWhitelist
+# our  stuff
+from stepwise_plugin.models import EcommerceConfiguration, EcommerceEOPWhitelist
 
 log = logging.getLogger(__name__)
-DEBUG = settings.ROVER_DEBUG
-DEBUG = True
+DEBUG = False
 UTC = pytz.UTC
 
 
@@ -118,7 +117,7 @@ def paywall_should_raise(request, context):
 
 
 def is_eop_student(request):
-    """Looks for a record in EOPWhitelist with the email address
+    """Looks for a record in EcommerceEOPWhitelist with the email address
     of the current user.
 
     Args:
@@ -130,7 +129,7 @@ def is_eop_student(request):
     """
     try:
         user = get_user_by_username_or_email(request.user)
-        usr = EOPWhitelist.objects.filter(user_email=user.email).first()
+        usr = EcommerceEOPWhitelist.objects.filter(user_email=user.email).first()
         if usr is not None:
             return True
     except ObjectDoesNotExist:
@@ -199,7 +198,6 @@ def get_course_id(request, context):
            course_key=context['course_key']
         ))
         """
-
         course_id = str(context["course_key"])
         # course_key = CourseKey.from_string(course_id)
         return course_id
@@ -244,7 +242,7 @@ def get_course_deadline_date(request, context):
 
     try:
         course_id = get_course_id(request, context)
-        configuration = Configuration.objects.filter(course_id=course_id).first()
+        configuration = EcommerceConfiguration.objects.filter(course_id=course_id).first()
         if configuration is not None:
             return configuration.payment_deadline_date
     except Exception:

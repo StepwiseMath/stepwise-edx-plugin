@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = []
+    dependencies = [("stepwise_plugin", "0001_initial")]
 
     operations = [
         migrations.CreateModel(
