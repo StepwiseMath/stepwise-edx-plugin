@@ -20,5 +20,3 @@
 
 django-environ      # used in stepwise_grades for overrides to stepwise_plugin API
 django-extensions   # harel's recommended dev tools
-
--e

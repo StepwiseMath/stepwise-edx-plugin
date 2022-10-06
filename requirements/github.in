@@ -56,4 +56,4 @@
 # Third-party:
 
 # Our libraries:
--e git+https://github.com/lpm0073/wp-oauth-backend#egg=wp-oauth-backend
+git+https://github.com/lpm0073/wp-oauth-backend.git@v1.0.0#egg=wp-oauth-backend
