@@ -7,13 +7,19 @@ import opaque_keys.edx.django.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('stepwise_plugin', '0002_ecommerce'),
+        ("stepwise_plugin", "0002_ecommerce"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='ecommerceconfiguration',
-            name='course_id',
-            field=opaque_keys.edx.django.models.CourseKeyField(default=None, help_text='Open edX Course Key (Opaque Key). Based on Institution, Course, Section identifiers. Example: course-v1:edX+DemoX+Demo_Course', max_length=255, primary_key=True, serialize=False),
+            model_name="ecommerceconfiguration",
+            name="course_id",
+            field=opaque_keys.edx.django.models.CourseKeyField(
+                default=None,
+                help_text="Open edX Course Key (Opaque Key). Based on Institution, Course, Section identifiers. Example: course-v1:edX+DemoX+Demo_Course",
+                max_length=255,
+                primary_key=True,
+                serialize=False,
+            ),
         ),
     ]
