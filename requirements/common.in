@@ -16,6 +16,9 @@
 #    as development.in or testing.in instead.
 
 -c ./constraints.txt
+-r github.in              # Forks and other dependencies not yet on PyPI
 
 django-environ      # used in stepwise_grades for overrides to stepwise_plugin API
 django-extensions   # harel's recommended dev tools
+
+-e

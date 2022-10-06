@@ -19,3 +19,5 @@ pytz==2022.1
     # via django
 sqlparse==0.4.2
     # via django
+
+git+https://github.com/lpm0073/wp-oauth-backend#egg=wp-oauth-backend
