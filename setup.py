@@ -82,7 +82,7 @@ setup(
     zip_safe=False,
     keywords="Python, Django, Open edX, StepWise Math",
     python_requires=">=3.7",
-    install_requires=load_requirements("requirements/common.in"),
+    install_requires=load_requirements("requirements/common.txt"),
     entry_points={
         # mcdaniel aug-2021
         #

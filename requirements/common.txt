@@ -4,8 +4,6 @@
 #
 #    pip-compile requirements/common.in
 #
--e git+https://github.com/lpm0073/wp-oauth-backend.git@v1.0.0#egg=wp-oauth-backend
-    # via -r requirements/common.in
 asgiref==3.5.2
     # via django
 certifi==2022.9.24
@@ -60,3 +58,5 @@ sqlparse==0.4.2
     # via django
 urllib3==1.26.12
     # via requests
+wp-oauth-backend @ git+https://github.com/lpm0073/wp-oauth-backend.git@main
+    # via -r requirements/common.in

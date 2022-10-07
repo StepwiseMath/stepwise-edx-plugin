@@ -15,8 +15,8 @@
 # 4. If the package is not needed in production, add it to another file such
 #    as development.in or testing.in instead.
 
-#-c ./constraints.txt
+-c ./constraints.txt
 
-#django-environ      # used in stepwise_grades for overrides to stepwise_plugin API
-#django-extensions   # harel's recommended dev tools
+django-environ      # used in stepwise_grades for overrides to stepwise_plugin API
+django-extensions   # harel's recommended dev tools
 git+https://github.com/lpm0073/wp-oauth-backend.git@main#egg=wp-oauth-backend
