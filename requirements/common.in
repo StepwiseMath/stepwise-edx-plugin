@@ -19,4 +19,4 @@
 
 #django-environ      # used in stepwise_grades for overrides to stepwise_plugin API
 #django-extensions   # harel's recommended dev tools
--e git+https://github.com/lpm0073/wp-oauth-backend.git@main#egg=wp-oauth-backend
+git+https://github.com/lpm0073/wp-oauth-backend.git@main#egg=wp-oauth-backend
