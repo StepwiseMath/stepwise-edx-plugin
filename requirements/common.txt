@@ -58,5 +58,5 @@ sqlparse==0.4.2
     # via django
 urllib3==1.26.12
     # via requests
-wp-oauth-backend @ git+https://github.com/lpm0073/wp-oauth-backend.git@main
+wp-oauth-backend @ git+https://github.com/lpm0073/wp-oauth-backend.git@v1.0.0
     # via -r requirements/common.in
