@@ -67,6 +67,7 @@ class StepwiseJSONEncoder(json.JSONEncoder):
     - velvety smooth error handling, understanding that we mostly use
       this class for generating log data.
     """
+
     def default(self, obj):
         if isinstance(obj, bytes):
             return str(obj, encoding="utf-8")

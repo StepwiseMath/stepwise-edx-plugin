@@ -19,6 +19,9 @@ exclude = '''
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta:__legacy__"
 
+#------------------------------------------------------------------------------
+# PyPi meta data
+#------------------------------------------------------------------------------
 [project]
 name = "stepwise-edx-plugin"
 version = "14.0.0"
@@ -38,8 +41,29 @@ dependencies = [
   "social-auth-app-django==5.0.0",
   "Django>=2.2,<2.3"
 ]
-keywords = ["Open edX", "api", "Stepwise"]
+
+keywords = ["Open edX", "api", "Stepwise", "QueriumCorp"]
 
 [project.urls]
 "Homepage" = "https://github.com/StepwiseMath/stepwise-edx-plugin"
 "Bug Tracker" = "https://github.com/StepwiseMath/stepwise-edx-plugin/issues"
+
+#------------------------------------------------------------------------------
+# see: https://setuptools.pypa.io/en/latest/userguide/dependency_management.html
+#------------------------------------------------------------------------------
+[project.optional-dependencies]
+common = [
+     "Django>=2.2,<2.3"
+]
+local = [
+    "pre-commit",
+    "black",
+    "flake8",
+    "ipython"
+]
+
+#------------------------------------------------------------------------------
+# see: https://setuptools.pypa.io/en/latest/userguide/entry_point.html
+#------------------------------------------------------------------------------
+[project.entry-points."lms.djangoapp"]
+stepwise_plugin = "stepwise_plugin.apps:StepwisePluginConfig"
