@@ -2,26 +2,61 @@
 Utility methods called from Mako templates in Stepwise Math theme.
 """
 # python  stuff
+
+import json
+from requests import Response
 import logging
 import datetime
 import pytz
+from unittest.mock import MagicMock
 
 # django stuff
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
+from django.contrib.auth import get_user_model
 
 # open edx stuff
 from opaque_keys.edx.keys import CourseKey
 from common.lib.xmodule.xmodule.modulestore.django import modulestore
 from lms.djangoapps.courseware.date_summary import VerifiedUpgradeDeadlineDate
 from common.djangoapps.student.models import get_user_by_username_or_email
+from openedx.core.djangoapps.user_api.errors import UserNotFound
 
 # our  stuff
 from stepwise_plugin.models import EcommerceConfiguration, EcommerceEOPWhitelist
-from stepwise_plugin.utils import is_faculty
+from stepwise_plugin.utils import is_faculty, masked_dict
 
-log = logging.getLogger(__name__)
 UTC = pytz.UTC
+logger = logging.getLogger(__name__)
+User = get_user_model()
+
+
+class MBJSONEncoder(json.JSONEncoder):
+    """
+    a custom encoder class.
+    - smooth out bumps mostly related to test data.
+    - ensure text returned is utf-8 encoded.
+    - velvety smooth error handling, understanding that we mostly use
+      this class for generating log data.
+    """
+
+    def default(self, obj):
+        if isinstance(obj, bytes):
+            return str(obj, encoding="utf-8")
+        if isinstance(obj, MagicMock):
+            return ""
+        try:
+            return json.JSONEncoder.default(self, obj)
+        except Exception:
+            # obj probably is not json serializable.
+            return ""
+
+
+def get_user(username):
+    try:
+        return User.objects.get(username=username)
+    except UserNotFound:
+        pass
 
 
 def paywall_should_render(request, context):
@@ -253,4 +288,69 @@ def get_course_deadline_date(request, context):
 
 
 def logger(msg):
-    log.info(msg)
+    logger.info(msg)
+
+
+def enrollement_counts(enrollments) -> dict:
+    """
+    Return a dict report of all enrollement counts
+    given a list of enrollements from the API
+    """
+    report = {"total": 0, "honor": 0, "audit": 0}
+    for enrollment in enrollments:
+        report.setdefault(enrollment["mode"], 0)
+        if enrollment.get("is_active"):
+            report[enrollment["mode"]] += 1
+            report["total"] += 1
+    return report
+
+
+def log_trace(caller: str, path: str, data: dict) -> None:
+    """
+    add an application log entry for higher level defs that call the edxapp api.
+    """
+    logger.info(
+        "member_press.client.Client.{caller}() request: path={path}, data={data}".format(
+            caller=caller, path=path, data=json.dumps(masked_dict(data), cls=MBJSONEncoder, indent=4)
+        )
+    )
+
+
+def log_pretrip(caller: str, url: str, data: dict, operation: str = "") -> None:
+    """
+    add an application log entry immediately prior to calling the edxapp api.
+    """
+    logger.info(
+        "member_press.client.Client.{caller}() {operation}, request: url={url}, data={data}".format(
+            operation=operation,
+            caller=caller,
+            url=url,
+            data=json.dumps(masked_dict(data), cls=MBJSONEncoder, indent=4),
+        )
+    )
+
+
+def log_postrip(caller: str, path: str, response: Response, operation: str = "") -> None:
+    """
+    log the api response immediately after calling the edxapp api.
+    """
+    status_code = response.status_code if response is not None else 599
+    log_message = "member_press.client.Client.{caller}() {operation}, response status_code={response_status_code}, path={path}".format(
+        operation=operation, caller=caller, path=path, response_status_code=status_code
+    )
+    if 200 <= status_code <= 399:
+        logger.info(log_message)
+    else:
+        try:
+            response_content = (
+                json.dumps(response.content, cls=MBJSONEncoder, indent=4)
+                if response is not None
+                else "No response object."
+            )
+            log_message += ", response_content={response_content}".format(response_content=response_content)
+        except TypeError:
+            # TypeError: cannot convert dictionary update sequence element #0 to a sequence
+            # This happens occasionally. Appears to be a malformed dict in the response body.
+            pass
+
+        logger.error(log_message)

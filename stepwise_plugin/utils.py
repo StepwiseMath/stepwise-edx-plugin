@@ -3,7 +3,7 @@ import json
 from dateutil.parser import parse, ParserError
 from unittest.mock import MagicMock
 
-SENSITIVE_KEYS = ["password", "token", "client_id", "client_secret", "Authorization", "secret"]
+from django.conf import settings
 
 
 def is_faculty(user):
@@ -37,7 +37,7 @@ def masked_dict(obj) -> dict:
     obj: a dict or a string representation of a dict, or None
 
     example:
-        2022-10-07 20:03:01,455 INFO edxclient.client.Client.register_user() request: path=/api/user/v1/account/registration/, data={
+        2022-10-07 20:03:01,455 INFO member_press.client.Client.register_user() request: path=/api/user/v1/account/registration/, data={
             "name": "__Pat_SelfReg-07",
             "username": "__Pat_SelfReg-07",
             "email": "pat.mcguire+Pat_SelfReg-07@cabinetoffice.gov.uk",
@@ -54,7 +54,7 @@ def masked_dict(obj) -> dict:
 
     obj = obj or {}
     obj = dict(obj)
-    for key in SENSITIVE_KEYS:
+    for key in settings.MEMBERPRESS_SENSITIVE_KEYS:
         obj = redact(key, obj)
     return obj
 
