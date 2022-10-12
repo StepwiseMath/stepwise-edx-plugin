@@ -45,8 +45,9 @@ dependencies = [
 keywords = ["Open edX", "api", "Stepwise", "QueriumCorp"]
 
 [project.urls]
-"Homepage" = "https://github.com/StepwiseMath/stepwise-edx-plugin"
+Homepage = "https://github.com/StepwiseMath/stepwise-edx-plugin"
 "Bug Tracker" = "https://github.com/StepwiseMath/stepwise-edx-plugin/issues"
+Repository = "https://github.com/StepwiseMath/stepwise-edx-plugin"
 
 #------------------------------------------------------------------------------
 # see: https://setuptools.pypa.io/en/latest/userguide/dependency_management.html
