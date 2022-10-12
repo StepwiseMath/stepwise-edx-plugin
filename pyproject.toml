@@ -27,10 +27,11 @@ name = "stepwise-edx-plugin"
 version = "14.0.0"
 authors = [
   { name="Lawrence McDaniel", email="lpm0073@gmail.com" },
+  { name="Kent Fuka", email="kent@querium.com" },
 ]
 description = "A Django plugin to add Stepwise Math custom features to Open edX installations."
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
