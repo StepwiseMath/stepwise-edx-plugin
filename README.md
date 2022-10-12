@@ -1,6 +1,6 @@
 # StepWise Open edX Plugin
 
-[![<pypi stepwise-edx-plugin](https://img.shields.io/static/v1?label=pypi&style=flat-square&color=0475b6&message=stepwise-edx-plugin)](https://pypi.org/project/stepwise-edx-plugin/) [![<Querium Stepwise](https://img.shields.io/static/v1?label=Querium&style=flat-square&color=ff5434&message=Stepwise)](https://www.querium.com/) [![hack.d Lawrence McDaniel](https://img.shields.io/badge/hack.d-Lawrence%20McDaniel-orange.svg)](https://lawrencemcdaniel.com)
+[![<pypi stepwise-edx-plugin](https://img.shields.io/static/v1?label=pypi&style=flat-square&color=0475b6&message=stepwise-edx-plugin)](https://pypi.org/project/stepwise-edx-plugin/) [![<Querium Stepwise Math](https://img.shields.io/static/v1?label=Querium&style=flat-square&color=ff5434&message=Stepwise%20Math)](https://stepwisemath.ai/) [![hack.d Lawrence McDaniel](https://img.shields.io/badge/hack.d-Lawrence%20McDaniel-orange.svg)](https://lawrencemcdaniel.com)
 
 ![Open edX](https://avatars.githubusercontent.com/u/40179672)
 
