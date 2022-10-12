@@ -14,3 +14,31 @@ exclude = '''
   | dist
 )/
 '''
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta:__legacy__"
+
+[project]
+name = "stepwise-edx-plugin"
+version = "14.0.0"
+authors = [
+  { name="Lawrence McDaniel", email="lpm0073@gmail.com" },
+]
+description = "A Django plugin to add Stepwise Math custom features to Open edX installations."
+readme = "README.rst"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  "social-auth-core==4.2.0",
+  "social-auth-app-django==5.0.0"
+]
+keywords = ["Open edX", "api", "Stepwise"]
+
+[project.urls]
+"Homepage" = "https://github.com/StepwiseMath/stepwise-edx-plugin"
+"Bug Tracker" = "https://github.com/StepwiseMath/stepwise-edx-plugin/issues"

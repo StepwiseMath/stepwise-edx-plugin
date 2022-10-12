@@ -11,7 +11,7 @@ HERE = os.path.abspath(os.path.dirname(__file__))
 
 def load_readme():
     with io.open(os.path.join(HERE, "README.md"), "rt", encoding="utf8") as f:
-        return f.read()
+        return f.read_text()
 
 
 def load_about():
@@ -63,7 +63,7 @@ print("Found packages: {packages}".format(packages=find_packages()))
 print("requirements found: {requirements}".format(requirements=load_requirements("requirements/common.in")))
 
 setup(
-    name="stepwise-plugin",
+    name="stepwise-edx-plugin",
     version=ABOUT["__version__"],
     url="https://github.com/StepwiseMath/stepwise-edx-plugin",
     project_urls={
@@ -74,8 +74,9 @@ setup(
     license="Proprietary",
     author="Lawrence McDaniel",
     author_email="lpm0073@gmail.com",
-    description="Django plugin to add Stepwise Math custom features to Open edX platform.",
+    description="A Django plugin to add Stepwise Math custom features to Open edX installations.",
     long_description=load_readme(),
+    long_description_content_type='text/markdown',
     packages=find_packages(),
     include_package_data=True,
     package_data={"": ["*.html"]},  # include any Mako templates found in this repo.
