@@ -11,6 +11,7 @@
 #
 #------------------------------------------------------------------------------
 
+python3 -m pip install --upgrade setuptools wheel twine
 python -m pip install --upgrade build
 
 sudo rm -r build
@@ -24,7 +25,7 @@ python3 -m pip install --upgrade twine
 twine check dist/*
 
 # PyPi test
-twine upload --skip-existing --repository testpypi dist/*
+#twine upload --skip-existing --repository testpypi dist/*
 
 # PyPi
 #twine upload --skip-existing dist/*
