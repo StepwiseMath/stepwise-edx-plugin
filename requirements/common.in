@@ -18,6 +18,5 @@
 -c ./constraints.txt
 
 django-environ                  # used in stepwise_grades for overrides to stepwise_plugin API
-django-extensions               # harel's recommended dev tools
 edx-oauth2-wordpress-backend    # lawrence's wordpress backend for SSO
 django-memberpress-client       # lawrence's wordpress memberpress api client
