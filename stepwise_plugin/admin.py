@@ -2,12 +2,11 @@
 
 # django
 from django.contrib import admin
-from .models import Configuration, Locale, MarketingSites
 
 # open edx
 
 # this plugin
-from .models import EcommerceConfiguration, EcommerceEOPWhitelist
+from .models import Configuration, Locale, MarketingSites, EcommerceConfiguration, EcommerceEOPWhitelist
 
 
 class MarketingSitesAdmin(admin.ModelAdmin):
