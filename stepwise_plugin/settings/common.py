@@ -11,7 +11,7 @@ import os
 env = environ.Env(
     # set casting, default value
     MEMBERPRESS_API_KEY=(str, "set-me-please"),
-    MEMBERPRESS_API_BASE_URL=(str, "https://yourdomain.com"),
+    MEMBERPRESS_API_BASE_URL=(str, "https://stepwisemath.ai"),
     MEMBERPRESS_API_KEY_NAME=(str, "MEMBERPRESS-API-KEY"),
     MEMBERPRESS_CACHE_EXPIRATION=(int, 60 * 60 * 24),
     MEMBERPRESS_SENSITIVE_KEYS=(
