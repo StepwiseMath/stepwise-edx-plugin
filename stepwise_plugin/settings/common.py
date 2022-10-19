@@ -41,7 +41,6 @@ def plugin_settings(settings):
     Injects local settings into django settings
     """
     settings.MAKO_TEMPLATE_DIRS_BASE.extend([TEMPLATES_DIR])  # noqa: F841
-    # settings.INSTALLED_APPS.append("django-memberpress-client")  # noqa: F841
 
     # MemberPress REST API client
     # -------------------------------------------------------------------------
