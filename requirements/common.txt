@@ -16,13 +16,6 @@ defusedxml==0.7.1
     # via
     #   python3-openid
     #   social-auth-core
-django==2.2.28
-    # via
-    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
-    #   -c requirements/./constraints.txt
-    #   django-memberpress-client
-django-memberpress-client==0.0.7
-    # via -r requirements/common.in
 edx-oauth2-wordpress-backend==1.0.0
     # via -r requirements/common.in
 idna==3.4
@@ -38,8 +31,6 @@ pyjwt==2.5.0
     # via social-auth-core
 python3-openid==3.2.0
     # via social-auth-core
-pytz==2022.1
-    # via django
 requests==2.28.1
     # via
     #   requests-oauthlib
@@ -52,7 +43,5 @@ social-auth-core==4.2.0
     # via
     #   edx-oauth2-wordpress-backend
     #   social-auth-app-django
-sqlparse==0.4.2
-    # via django
 urllib3==1.26.12
     # via requests

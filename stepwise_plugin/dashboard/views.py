@@ -18,8 +18,17 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 from opaque_keys.edx.keys import CourseKey
-from common.djangoapps.student.models import CourseEnrollment
-from xmodule.modulestore.django import modulestore
+
+try:
+    from common.djangoapps.student.models import CourseEnrollment
+    from xmodule.modulestore.django import modulestore
+except ImportError:
+
+    class CourseEnrollment:
+        pass
+
+    class modulestore:
+        pass
 
 
 from .utils import set_language_preference

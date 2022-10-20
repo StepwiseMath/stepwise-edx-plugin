@@ -2,9 +2,30 @@ import logging
 from django.conf import settings
 from urllib.parse import urlparse
 
-from openedx.core.djangoapps.lang_pref.api import get_closest_released_language, released_languages
-from openedx.core.djangoapps.lang_pref import LANGUAGE_KEY
-from openedx.core.djangoapps.user_api.preferences.api import get_user_preference, set_user_preference
+try:
+    # hooks for openedx plugins
+    # these imports only work when this plugin is installed
+    # in an Open edX build.
+    from openedx.core.djangoapps.lang_pref.api import get_closest_released_language, released_languages
+    from openedx.core.djangoapps.lang_pref import LANGUAGE_KEY
+    from openedx.core.djangoapps.user_api.preferences.api import get_user_preference, set_user_preference
+except ImportError:
+    # for both development as well as deployment into a
+    # non open edx Django platform.
+    LANGUAGE_KEY = "en"
+
+    def get_closest_released_language(language_param):
+        return "en"
+
+    def released_languages():
+        return ["en"]
+
+    def get_user_preference(user, LANGUAGE_KEY):
+        return "en"
+
+    def set_user_preference(user, LANGUAGE_KEY, closest_lang):
+        return None
+
 
 log = logging.getLogger(__name__)
 

@@ -8,8 +8,33 @@ import logging
 
 from django.apps import AppConfig
 
-from edx_django_utils.plugins import PluginSettings, PluginURLs
-from openedx.core.djangoapps.plugins.constants import ProjectType, SettingsType
+try:
+    # hooks for openedx plugins
+    # these imports only work when this plugin is installed
+    # in an Open edX build.
+    from edx_django_utils.plugins import PluginSettings, PluginURLs
+    from openedx.core.djangoapps.plugins.constants import ProjectType, SettingsType
+except ImportError:
+    # for both development as well as deployment into a
+    # non open edx Django platform.
+    class PluginSettings:
+        CONFIG = "config"
+        RELATIVE_PATH = "relative/path/"
+
+    class PluginURLs:
+        CONFIG = "config"
+        NAMESPACE = "namespace"
+        REGEX = ("regex",)
+        RELATIVE_PATH = "urls"
+
+    class ProjectType:
+        LMS = ""
+        CMS = ""
+
+    class SettingsType:
+        PRODUCTION = ""
+        COMMON = ""
+
 
 log = logging.getLogger(__name__)
 

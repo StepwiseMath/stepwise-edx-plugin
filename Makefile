@@ -4,11 +4,46 @@
 .PHONY: build
 .PHONY: requirements
 
+db:
+	mysql -uroot -p < stepwise_plugin/scripts/init-db.sql
+
+up:
+	brew services start mysql
+	brew services start redis
+
+down:
+	brew services stop mysql
+	brew services stop redis
+
+server:
+	./manage.py runserver 0.0.0.0:8000
+
+migrate:
+	./manage.py migrate
+	./manage.py makemigrations stepwise_plugin
+	./manage.py migrate stepwise_plugin
+
 requirements:
 	pip-compile requirements/common.in
 	pip-compile requirements/local.in
 	pip install -r requirements/common.txt
 	pip install -r requirements/local.txt
+
+shell:
+	./manage.py shell_plus
+
+
+quickstart:
+	pre-commit install
+	make requirements
+	make up
+	make db
+	make migrate
+	./manage.py createsuperuser
+	make server
+
+test:
+	./manage.py test
 
 build:
 	python3 -m pip install --upgrade setuptools wheel twine
@@ -16,7 +51,7 @@ build:
 
 	if [ -d "./build" ]; then sudo rm -r build; fi
 	if [ -d "./dist" ]; then sudo rm -r dist; fi
-	if [ -d "./django_memberpress_client.egg-info" ]; then sudo rm -r django_memberpress_client.egg-info; fi
+	if [ -d "./django_stepwise_plugin.egg-info" ]; then sudo rm -r django_stepwise_plugin.egg-info; fi
 
 	python3 -m build --sdist ./
 	python3 -m build --wheel ./

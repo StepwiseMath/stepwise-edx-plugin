@@ -8,9 +8,19 @@ StepWise theming utility functions
 import logging
 from ast import Str
 
-from openedx.core.djangoapps.lang_pref import LANGUAGE_KEY
-from openedx.core.djangoapps.user_api.preferences.api import get_user_preference
-from openedx.core.djangoapps.lang_pref.api import get_closest_released_language
+try:
+    from openedx.core.djangoapps.lang_pref import LANGUAGE_KEY
+    from openedx.core.djangoapps.user_api.preferences.api import get_user_preference
+    from openedx.core.djangoapps.lang_pref.api import get_closest_released_language
+except ImportError:
+    LANGUAGE_KEY = "en"
+
+    def get_user_preference():
+        return "en"
+
+    def get_closest_released_language():
+        return "en"
+
 
 from stepwise_plugin.models import Locale, MarketingSites
 
