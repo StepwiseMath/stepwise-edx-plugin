@@ -55,7 +55,7 @@ Repository = "https://github.com/StepwiseMath/stepwise-edx-plugin"
 #------------------------------------------------------------------------------
 [project.optional-dependencies]
 common = [
-     "Django>=2.2,<2.3"
+     "Django>=3.2"
 ]
 local = [
     "pre-commit",
