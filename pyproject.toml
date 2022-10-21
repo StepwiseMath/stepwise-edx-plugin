@@ -1,3 +1,19 @@
+# -----------------------------------------------------------------------------
+# lawrence mcdaniel
+# https://lawrencemcdaniel.com
+#
+#
+# see:  https://semver.org/
+#       https://github.com/apps/semantic-pull-requests
+#       https://mestrak.com/blog/semantic-release-with-python-poetry-github-actions-20nn
+#
+#
+# commit conventions:
+# fix:
+# feat:
+# build:, chore:, ci:, docs:, style:, refactor:, perf:, test:
+#
+# -----------------------------------------------------------------------------
 [tool.black]
 line-length = 120
 include = '\.pyi?$'
@@ -15,6 +31,16 @@ exclude = '''
 )/
 '''
 
+[tool.semantic_release]
+version_variable = [
+    "src_folder/__init__.py:__version__",
+    "pyproject.toml:version"
+]
+branch = "main"
+upload_to_pypi = true
+upload_to_release = true
+build_command = "pip install poetry && poetry build"
+
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta:__legacy__"
@@ -24,7 +50,7 @@ build-backend = "setuptools.build_meta:__legacy__"
 #------------------------------------------------------------------------------
 [project]
 name = "stepwise-edx-plugin"
-version = "14.0.12"
+version = "14.0.13"
 authors = [
   { name="Lawrence McDaniel", email="lpm0073@gmail.com" },
   { name="Kent Fuka", email="kent@querium.com" },

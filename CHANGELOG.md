@@ -1,5 +1,9 @@
 # CHANGE LOG
 
+## Version 14.0.12 (2022-10-21)
+
+- local testing in tutor dev
+
 ## Version 14.0.12 (2022-10-20)
 
 - setup local Django dev environment

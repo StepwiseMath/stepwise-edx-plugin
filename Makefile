@@ -16,11 +16,13 @@ down:
 	brew services stop redis
 
 server:
+	make up
 	./manage.py runserver 0.0.0.0:8000
 
 migrate:
-	./manage.py migrate
+	./manage.py makemigrations
 	./manage.py makemigrations stepwise_plugin
+	./manage.py migrate
 	./manage.py migrate stepwise_plugin
 
 requirements:
@@ -28,6 +30,9 @@ requirements:
 	pip-compile requirements/local.in
 	pip install -r requirements/common.txt
 	pip install -r requirements/local.txt
+
+report:
+	cloc $(git ls-files)
 
 shell:
 	./manage.py shell_plus
