@@ -1,4 +1,12 @@
+# ------------------------------------------------------------------------------
+# lawrence mcdaniel
+# http://lawrencemcdaniel.com
+#
+#
+# ------------------------------------------------------------------------------
+
 # pylint: disable=open-builtin
+
 import io
 import os
 from setuptools import find_packages, setup
@@ -14,20 +22,7 @@ def load_readme():
         return f.read()
 
 
-def load_about():
-    about = {}
-    with io.open(
-        os.path.join(HERE, "stepwise_plugin", "__about__.py"),
-        "rt",
-        encoding="utf-8",
-    ) as f:
-        exec(f.read(), about)  # pylint: disable=exec-used
-    return about
-
-
 README = load_readme()
-ABOUT = load_about()
-VERSION = ABOUT["__version__"]
 
 
 def load_requirements(*requirements_paths):
@@ -66,7 +61,6 @@ print("requirements found: {requirements}".format(requirements=load_requirements
 
 setup(
     name="stepwise-edx-plugin",
-    version=VERSION,
     url="https://github.com/StepwiseMath/stepwise-edx-plugin",
     project_urls={
         "Code": "https://github.com/StepwiseMath/stepwise-edx-plugin",
@@ -111,7 +105,4 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
     ],
-    extras_require={
-        "Django": ["Django>=3.2"],
-    },
 )
