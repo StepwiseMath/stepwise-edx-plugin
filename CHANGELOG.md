@@ -1,5 +1,9 @@
 # CHANGE LOG
 
+## Version 14.0.12 (2022-11-08)
+
+- reconfigure oauth for miniOrange OAuth / OpenID Connect Server
+
 ## Version 14.0.12 (2022-10-21)
 
 - local testing in tutor dev
