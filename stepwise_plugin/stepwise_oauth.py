@@ -14,4 +14,4 @@ class StepwiseMathWPOAuth2(WPOpenEdxOAuth2):
 
     # note: no slash at the end of the base url. Python Social Auth
     # might clean this up for you, but i'm not 100% certain of that.
-    BASE_URL = "https://stepwisemath.ai"
+    BASE_URL = "https://stepwisemath.ai/wp-json/moserver"
