@@ -13,11 +13,7 @@ class StepwiseMathWPOAuth2(WPOpenEdxOAuth2):
     name = "stepwisemath-oauth"
 
     # setup oauth endpoints:
-    # authorization:    https://stepwisemath.ai/wp-json/moserver/authorize
-    # token:            https://stepwisemath.ai/wp-json/moserver/token
-    # user info:        https://stepwisemath.ai/wp-json/moserver/resource
+    # authorization:    https://stepwisemath.ai/oauth/authorize
+    # token:            https://stepwisemath.ai/oauth/token
+    # user info:        https://stepwisemath.ai/oauth/me
     BASE_URL = "https://stepwisemath.ai"
-    PATH = "wp-json/moserver/"
-    AUTHORIZATION_ENDPOINT = "authorize"
-    TOKEN_ENDPOINT = "token"
-    USERINFO_ENDPOINT = "resource"

@@ -1,8 +1,8 @@
 # CHANGE LOG
 
-## Version 14.0.16 (2022-11-08)
+## Version 14.0.17 (2022-11-09)
 
-- reconfigure oauth for miniOrange OAuth / OpenID Connect Server
+- revert WP oauth backend to work with WP OAuth Server
 
 ## Version 14.0.12 (2022-10-21)
 
