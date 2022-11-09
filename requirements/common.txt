@@ -16,7 +16,7 @@ defusedxml==0.7.1
     # via
     #   python3-openid
     #   social-auth-core
-edx-oauth2-wordpress-backend==1.0.0
+edx-oauth2-wordpress-backend==1.0.1
     # via -r requirements/common.in
 idna==3.4
     # via requests
