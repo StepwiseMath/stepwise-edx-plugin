@@ -63,7 +63,9 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-dependencies = []
+dependencies = [
+  "edx-oauth2-wordpress-backend==1.0.7"
+]
 
 keywords = ["Open edX", "api", "Stepwise", "QueriumCorp"]
 
