@@ -1,5 +1,9 @@
 # CHANGE LOG
 
+## Version 15.0.0 (2023-08-12)
+
+- version bumps for Olive
+
 ## Version 14.0.17 (2022-11-09)
 
 - revert WP oauth backend to work with WP OAuth Server
