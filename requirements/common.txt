@@ -4,46 +4,5 @@
 #
 #    pip-compile requirements/common.in
 #
-certifi==2022.9.24
-    # via requests
-cffi==1.15.1
-    # via cryptography
-charset-normalizer==2.0.12
-    # via
-    #   -c requirements/./constraints.txt
-    #   requests
-cryptography==38.0.1
-    # via social-auth-core
-defusedxml==0.7.1
-    # via
-    #   python3-openid
-    #   social-auth-core
 edx-oauth2-wordpress-backend==1.0.6
     # via -r requirements/common.in
-idna==3.4
-    # via requests
-oauthlib==3.0.1
-    # via
-    #   -c requirements/./constraints.txt
-    #   requests-oauthlib
-    #   social-auth-core
-pycparser==2.21
-    # via cffi
-pyjwt==2.5.0
-    # via social-auth-core
-python3-openid==3.2.0
-    # via social-auth-core
-requests==2.28.1
-    # via
-    #   requests-oauthlib
-    #   social-auth-core
-requests-oauthlib==1.3.1
-    # via social-auth-core
-social-auth-app-django==5.0.0
-    # via edx-oauth2-wordpress-backend
-social-auth-core==4.2.0
-    # via
-    #   edx-oauth2-wordpress-backend
-    #   social-auth-app-django
-urllib3==1.26.12
-    # via requests
