@@ -63,11 +63,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-dependencies = [
-  "social-auth-core==4.2.0",
-  "social-auth-app-django==5.0.0",
-  "Django>=3.2"
-]
+dependencies = []
 
 keywords = ["Open edX", "api", "Stepwise", "QueriumCorp"]
 

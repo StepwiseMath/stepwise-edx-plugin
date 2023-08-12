@@ -4,5 +4,5 @@
 #
 #    pip-compile requirements/common.in
 #
-edx-oauth2-wordpress-backend==1.0.6
+edx-oauth2-wordpress-backend==1.0.7
     # via -r requirements/common.in
