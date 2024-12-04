@@ -64,7 +64,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-  "edx-oauth2-wordpress-backend==1.0.7"
+  "edx-oauth2-wordpress-backend==1.0.8"
 ]
 
 keywords = ["Open edX", "api", "Stepwise", "QueriumCorp"]
